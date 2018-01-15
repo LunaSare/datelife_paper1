@@ -5,23 +5,17 @@ bibliography: library.bib
 csl: systematic-biology.csl
 ---
 
-**Title**
+Running head: DATELIFE REVEALING THE DATED TREE OF LIFE <!--MAX 50 CHARACTERS, ALL CAPITALS-->
+Title: DateLife: Leveraging databases and analytical tools to reveal the dated Tree of Life
+Authors: Luna L. Sánchez-Reyes^1^, Brian C. O’Meara^1^
+Correspondence address: 
+1. *Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, 425 Hesler Biology Building, Knoxville, TN 37996, USA*
+* Corresponding author: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
 
-Datelife:
-
-Leveraging databases to study the time frame of origin of species/lineages
-
-Leveraging databases to study the time frame of lineage divergence
-
-Mining databases to get closer to a publicly available time tree of life
-
-
-**Authors**
-
-Sánchez-Reyes Luna L., O’Meara Brian C.
+*abstract.-* 
 
 
-**Introduction**
+<!--Introduction-->
 
 Date of origin/ time of origin of lineages/ time of diversification
 events/ time
@@ -44,7 +38,7 @@ With new methods such as total evidence and revbayes (fossilized
 birth-death), studies might include living and fossil lineages.
 
 Also, the amount of data on time of origin and phylogenetic relationships 
-is increasing steadily because of better data sharing practices, more
+is increasing in a steady way because of better data sharing practices, more
 and better methods for molecular dating, (what else?)
 
 Molecular dates are a useful source of data for diversification and
@@ -63,7 +57,7 @@ Data curation is largely based on taxonomic knowledge.
 It is important to use available data on time frame of lineage origin:
 To know the state of dating for a group of interest:
 What range of estimated ages exist already? Are fossil and molecular
-time frames coherent? (e.g., @Magallon 2015).
+time frames coherent? (e.g., [@Magallon2015c]).
 To construct a time tree of life.
 For science communication, improve scientific discussions, time-framing
 other events of importance in other research areas.
@@ -98,8 +92,8 @@ It can perform tree dating on a tree with branch lengths proportional to
 molecular substitution rate using query dates as calibration points
 (UseAllCalibrations function).
 
-
-**Description of Datelife**
+<!--Description of Datelife-->
+<span style="font-variant:small-caps;">Description</span>
 
 (BOLD and OToL species names are homogeneous?)
 
@@ -130,38 +124,21 @@ How to treat negative branch lengths.
 
 The dates can be used as calibration points for larger trees.
 
-**Benchmark: Testing DateLife computing performance**
+<!--**Benchmark: Testing DateLife computing performance**-->
+<span style="font-variant:small-caps;">Benchmark</span>
 
 a)  Speed with different amount of lineages and types of analysis
 
-  ------------------------------------------------------------------------------------------------------
-  Number of lineages   Tol cache search   Bold tree           Bold chronogram     Dating
-                                                                                  
-                       EstimateDates()    GetBoldOToLTree()   GetBoldOToLTree()   UseAllCalibrations()
-  -------------------- ------------------ ------------------- ------------------- ----------------------
-  3                                                                               
 
-  10                                                                              
-
-  100                                                                             
-
-  1 000                                                                           
-
-  10 000                                                                          
-
-  100 000                                                                         
-
-  ------------------------------------------------------------------------------------------------------
-
-Maybe a graph on computing times…
-
-a)  Speed of web interface and of r package (in computers with different
+b) Speed of web interface and of r package (in computers with different
     capacities?)
+    
 ```{r include=FALSE}
 
 ```
 
-**Biological example: Testing DateLife accuracy**
+<!--**Biological example: Testing DateLife accuracy**-->
+<span style="font-variant:small-caps;">Biological example</span>
 
 Bird (or reptile) chronograms, too long time...
 finches is good
@@ -176,29 +153,31 @@ Determine which clade of birds has the more chronograms (have been dated
 more times) and use that as biological example
 
 
-**Discussion**
+<!--**Discussion/Conclusions** there is not a discussion section in this type of sys Bio contributions-->
+<span style="font-variant:small-caps;">Conclusions</span>
 
 Potential applications demonstrated here.
 
 Improvements, short and long-term.
 
 
-**Conclusions**
+<!--**Availability**-->
+<span style="font-variant:small-caps;">Availability</span>
 
-
-**Availability**
 DateLife can be used through its current website <http://www.datelife.org/query/>
 Or through phylotastic web portal<http://phylo.cs.nmsu.edu:3000/>
 DateLife can also be used locally through its R package, which can be installed from CRAN or from the github repository using the devtools R package with the command devtools::install_github("phylotastic/datelife") in R.
 DateLife source code is available in the following github repository:
 
-**Supplementary Material**
+<!--**Supplementary Material**-->
+<span style="font-variant:small-caps;">Supplementary Material</span>
 
 Supplementary material, including code files and
 online-only appendices, can be found in the Dryad data
 repository at
 
-**Funding**
+<!--**Funding**-->
+<span style="font-variant:small-caps;">Funding</span>
 
 Funding was provided by NSF grant 1458603
 
@@ -209,8 +188,10 @@ Open Tree of Life
 University of Tennessee, Knoxville
 
 
-**Acknowledgements**
+<!--**Acknowledgements**-->
+<span style="font-variant:small-caps;">Acknowledgements</span>
 
 
-**References**
+<!--**References**-->
+<span style="font-variant:small-caps;">References</span>
 # References
