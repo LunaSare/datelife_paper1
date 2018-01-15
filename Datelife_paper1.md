@@ -1,17 +1,24 @@
+---
+title: "Datelife_paper1"
+output: html_document
+bibliography: library.bib
+csl: systematic-biology.csl
+---
+
 **Title**
 
 Datelife:
 
-Leveraging databases to study the time frame of origin of species
+Leveraging databases to study the time frame of origin of species/lineages
 
 Leveraging databases to study the time frame of lineage divergence
 
-Mining databases to get closer to a time tree of life
+Mining databases to get closer to a publicly available time tree of life
 
 
 **Authors**
 
-Sánchez-Reyes Luna L., O’Meara B.
+Sánchez-Reyes Luna L., O’Meara Brian C.
 
 
 **Introduction**
@@ -49,12 +56,14 @@ Taxonomy is also different among studies and difficult to reconcile.
 
 Data curation is necessary at some point (is this always true?). At
 least, the research community views it as an important or even crucial
-step before data analysis.
+step before data analysis. 
+
+Data curation is largely based on taxonomic knowledge.
 
 It is important to use available data on time frame of lineage origin:
 To know the state of dating for a group of interest:
 What range of estimated ages exist already? Are fossil and molecular
-time frames coherent? (e.g., Magallon et al. 2015).
+time frames coherent? (e.g., @Magallon 2015).
 To construct a time tree of life.
 For science communication, improve scientific discussions, time-framing
 other events of importance in other research areas.
@@ -64,6 +73,12 @@ Generate new dates using all available DNA sequence information.
 Perform one global analysis using all available information.
 Problems or downsides: This might be time consuming for large groups
 
+General issues with dating techniques
+Sauquet et al. 2012. Testing the Impact of Calibration on Molecular Divergence Times Using a Fossil-Rich Group: The Case of Nothofagus (Fagales)
+What can datelife do better, or palliate?
+
+
+
 What led to datelife development?
 Describe public and research necessities covered by datelife…
 
@@ -71,9 +86,10 @@ Importance of datelife:
 It allows rapidly obtaining time frame of lineage origin/divergence from
 already published studies, which are ideally constructed using robust
 information, such as sequence data and curated fossil calibrations.
-Can rapidly construct dates from sequence data if available in BOLD for
-a set of lineages.
-Allows direct comparison of dates obtained with different markers
+Can rapidly reconstruct divergence dates for
+a set of lineages using sequence data from the Barcode Of Life Database (BOLD, http://www.boldsystems.org/).
+and the synthetic Open Tree of Life (OToL, https://tree.opentreeoflife.org), which relies on the taxonomic knowledge.
+-Allows direct comparison of dates obtained with different markers
 available in BOLD (in plants and fungi in particular).
 When lineages are not present in any chronograms and do not have
 sequence data, it can makeup branch lengths with different methods and
@@ -103,6 +119,11 @@ Then, the user can also choose to add one or all missing taxa to all or some que
 Explain each...
 
 Finally, a tree from query lineages with branch lengths equivalent to substitution rates can be constructed using barcode markers available through the Barcode of Life Database (BOLD) and following a reference tree, which can be specified by the user. By default it uses the synthetic Open Tree of Life. This molecular tree can then be dated with chronosMPL from the ape package, treePL, PATHd8, mrbayes.
+
+To estimate node ages:
+
+chronosMPL uses mean path length method from Britton et al. 2002
+
 Taxa with no sequence data can also be added following the reference tree using the same methods described before.
 
 How to treat negative branch lengths.
@@ -136,11 +157,16 @@ Maybe a graph on computing times…
 
 a)  Speed of web interface and of r package (in computers with different
     capacities?)
+```{r include=FALSE}
 
+```
 
 **Biological example: Testing DateLife accuracy**
 
-Bird (or reptile) chronograms
+Bird (or reptile) chronograms, too long time...
+finches is good
+nothofagus
+
 
 Look for all chronograms containing any birds
 
@@ -163,15 +189,18 @@ Improvements, short and long-term.
 **Availability**
 DateLife can be used through its current website <http://www.datelife.org/query/>
 Or through phylotastic web portal<http://phylo.cs.nmsu.edu:3000/>
-DateLife can also be used in situ through its R package, which can be installed from CRAN or from the github repository using the devtools R package with the command devtools::install_github("phylotastic/datelife") in R.
-DateLife source code is available in the following github repositories:
+DateLife can also be used locally through its R package, which can be installed from CRAN or from the github repository using the devtools R package with the command devtools::install_github("phylotastic/datelife") in R.
+DateLife source code is available in the following github repository:
 
 **Supplementary Material**
 
+Supplementary material, including code files and
+online-only appendices, can be found in the Dryad data
+repository at
 
 **Funding**
 
-NSF grant 1458603
+Funding was provided by NSF grant 1458603
 
 NESCent
 
@@ -184,3 +213,4 @@ University of Tennessee, Knoxville
 
 
 **References**
+# References
