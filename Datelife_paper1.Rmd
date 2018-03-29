@@ -1,17 +1,19 @@
 ---
+output: pdf_document
+fontsize: 12pts
+textalign: left  # this does not work...
+geometry: margin = 1in
 bibliography: library.bib
 csl: systematic-biology.csl
-fontsize: 12pts
-geometry: margin = 1in
-header-includes:
-- \usepackage[left]{lineno}
-- \linenumbers
-linestretch: 2
 link-citations: yes
-output:
-  word_document: default
-  pdf_document: default
-textalign: left
+# indent: true # this works
+# header-includes:
+#    - \setlength\parindent{24pt}  # this works too, but I'mg onna indent manually with 4 spaces
+# nope, 4 spaces indents are not recognized, they do something else
+linestretch: 2
+header-includes:
+    - \usepackage[left]{lineno}
+    - \linenumbers
 ---
 
 Running head: DATELIFE: REVEALING THE DATED TREE OF LIFE <!--MAX 50 CHARACTERS, ALL CAPITALS-->
@@ -37,17 +39,17 @@ Corresponding authors: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
 \newpage
 
 <!--INTRODUCTION-->
-Divergence time of lineages<!--named biological entities--> <!--(taxon ages)--> constitutes in many ways the main knowledge necessary for evolutionary understanding.
+Divergence time of lineages<!--named biological entities, taxon ages?--> constitutes in many ways the main knowledge necessary for evolutionary understanding.
 <!--Along with phylogenetic relationships, it is the most important piece of information allowing to test alternative evolutionary hypothesis in many areas of research, from developmental to ecological questions.
-Allong with migration rates and patterns, it is fundamental to test biogeographical hypothesis-->
+Along with migration rates and patterns, it is fundamental to test biogeographical hypothesis-->
 Coupled to species number and distribution, it is the basic information for the study of diversification processes, such as the tempo and mode of speciation and extinction, crucial for the understanding of how biodiversity patterns are shaped across space and time [@Morlon2014].
 
 When organisms are preserved in a fossil form, a time frame of taxon origin can be obtained directly from the age of rock strata.
 However, not all organisms fossilize well or at all.
 Fossilization success alone is highly circumstancial, and varies depending on a number of parameters including the nature of the habitat, population size, species range breadth and physical characteristics of the organism. <!--fossil recovery is also highly circumstancial-->
 Thus, relying only on the fossil record to obtain a time frame of lineage divergence<!--taxon ages--> for all life is<!--, alas,--> not possible.
-Relative rate of DNA or aminoacid substitution constitutes another important source of information on lineage divergence. <!--describe the two components of rel subst rate?-->
-It can be obtained from hypothesis of character homology (alignments) when reconstructing phylogenetic relationships. Molecular dating techniques use external data such as absolute time calibrations (e.g., fossils, geologic events) or absolute substitution rates <!--birds--> to generate dated phylogenies (chronograms) which contain information on absolute times of node divergence and taxon ages. <!--With molecular dating methods, an external calibration point is still necessary to estimate the absolute time of origin. Hence, the accumulation of data on fossils for calibration is also continual-->
+Relative rate of DNA or aminoacid substitution constitutes another important source of information on lineage divergence. <!--describe the two components of rel subst rate: which, contain tne information on absolute rate of substitution and absolute time.-->
+It is usually obtained from hypothesis of character homology (alignments) when reconstructing phylogenetic relationships. Molecular dating techniques use external data such as absolute time calibrations (e.g., fossils, geologic events) or absolute substitution rates <!--birds--> to generate dated phylogenies (chronograms) which contain information on absolute times of node divergence and taxon ages. <!--With molecular dating methods, an external calibration point is still necessary to estimate the absolute time of origin. Hence, the accumulation of data on fossils for calibration is also continual-->
 <!--This method has been particularly useful to obtain time frame of origin of organisms with poor or no fossil record, but is also largely used for organisms with rich fossil records-->
 <!--Models allow to take into account the nature of the fossil record: Given the characteristics of the fossilization process, the quality of dates inferred directly from it is not always considered the best.-->
 
@@ -79,7 +81,7 @@ Lineage names are different among studies and difficult to reconcile;
 Taxonomy is also different among studies and difficult to reconcile.
 <!--Data curation is necessary at some point (is this always true?)-->
 Also, data curation is an important part of any biological study. The research community considers it as an important or even crucial step before data analysis. Hence, automated processes for large data analysis are frequently received with skepticism.
-Recent work on this area (e.g.,, supersmart<!--and, which others?-->) aims to:
+Recent work on this area (e.g., supersmart<!--and, which others?-->) aims to:
 Generate new dates using all available DNA sequence information;
 Perform one global analysis using all available information;
 Problems or downsides: This might be time consuming for large groups and a lot of data curation is still necessary.
@@ -93,7 +95,7 @@ DateLife can summarize this information in several formats that can be easily in
 This  allows rapidly obtaining a time frame of taxon divergence for a wide number of taxa.
 DateLife can also generate chronograms for taxa with little available information, by using the available data as calibration points.
 DateLife is the main service for scaling phylogenetic trees in Phylotastic! system [@Stoltzfus2013] <!--to construct phylogenetic trees on the fly [http://phylotastic.org/].-->
-It can be used through an R package <link to documentation>, a web interface <http://www.datelife.org/query/> and an API <!--(still not up, right?)-->
+It can be used through an R package<link to documentation>, a web interface (<http://www.datelife.org/query/>) and an API<!--(still not up, right?)-->.
 
 
 <!--DESCRIPTION of Datelife-->
@@ -114,7 +116,7 @@ DateLife's main function searches taxon names across the chronogram database spe
 DateLife identifies chronograms having at least two taxon names, and subset them to contain only the taxa of interest within each chronogram. It then stores taxon age information from each chronogram individually as a patristic matrix, named with the citation of the original study. This format allows a rapid summary in a number of different ways, including: 1) citations of the original studies containing the subset chronograms, 2) a list of subset chronograms' mrca ages, 3) a list of subset chronograms in newick or phylo format, 4) a table containing all information in html or R's data frame format, or 5) as a single chronogram summarized from subset chronograms using the supertree Super Distance Matrix (SDM) approach [@Criscuolo2006] or using the median of branch lengths. <!--(how to better explain the latter?? Also, I just discovered the median gives non ultrametric trees...).-->
 
 DateLife also stores information on input taxon presence/absence across subset chronograms. Users can choose to add ages of missing taxa to subset chronograms in different ways, depending on the amount of knowledge or how much they want to be involved in the steps of the addition process.
-If users have no access to biological information (i.e., a character, DNA or protein matrix), missing taxa can be added to any chronogram simply at random, or by following taxonomic or phylogenetic knowledge from expert sources. There are a wide number of open reference taxonomies available, such as the Catalogue of Life [@Roskob2017] or the NCBI taxonomy database [@Federhen2012]. Expert phylogenies to be used as topological constraint or backbone (a tree with no branch lengths) can also be obtained from a number of public repositories, such as OToL [@Hinchliff2015], TreeBASE [@Piel2002] and Dryad <https://www.datadryad.org//>.
+If users have no access to biological information (i.e., a character, DNA or protein matrix), missing taxa can be added to any chronogram simply at random, or by following taxonomic or phylogenetic knowledge from expert sources. There are a wide number of open reference taxonomies available, such as the Catalogue of Life [@Roskob2017] or the NCBI taxonomy database [@Federhen2012]. Expert phylogenies (with or without branch lengths) to be used as topological constraint (backbone) can also be obtained from a number of public repositories, such as OToL [@Hinchliff2015], TreeBASE [@Piel2002] and Dryad (<https://www.datadryad.org//>).
 At the moment, DateLife only uses OToL's synthetic tree and reference taxonomy as expert knowledge to automatically add missing taxa to chronograms. Alternatively, users can input a reference taxonomy or topological constraint of their choosing or making. <!-- at some point we will implement the possibility for users to choose different reference taxonomies automatically-->
 If OToL's synthetic tree is not satisfactorily resolved for the taxa of interest, DateLife can construct a sequence data matrix from DNA markers available from the Barcode of Life Database (BOLD; @Ratnasingham2007), to attempt to further resolve polytomies. It will follow OToL's synthetic tree as backbone. <!--This molecular tree can then be dated with chronosMPL from the ape package, but is it really needed?? To estimate node ages chronosMPL uses mean path length method from Britton et al. 2002-->
 <!--It can rapidly construct trees with branch lengths from
@@ -126,7 +128,7 @@ Age data from several chronograms can be combined and congruified to be used as 
 
 Several dating methods are implemented in DateLife.
 Branch Length Adjuster (BLADJ) is a simple algorithm to distribute ages of undated nodes evenly, which minimizes age variance in the chronogram [@Webb2008].
-DateLife implements BLADJ from the development R version of phylocom's R package [@Webb2008], phylocomr <https://github.com/ropensci/phylocomr>. It can only be used when there is a topological constraint with no branch lengths.
+DateLife implements BLADJ from the development R version of phylocom's R package [@Webb2008], phylocomr (<https://github.com/ropensci/phylocomr>). It can only be used when there is a topological constraint with no branch lengths.
 PATHd8 is a non-clock, rate-smoothing method [@Britton2007] to date trees. It is also called through R. <!--It could be used with a reference taxonomy, if we provide a tree with politomies-->
 treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method [@Smith2012]. It is called through R.
 MrBayes program [@Huelsenbeck2001; @Ronquist2003] can be used when adding taxa at random, following a reference taxonomy or a topological constraint. It draws ages from a pure birth model, as implemented by Jetz and collaborators [-@Jetz2012].
@@ -198,7 +200,7 @@ The combination of new analytical techniques, availability of more fossil and mo
 <!--Why you should use it-->Compared to similar platforms such as time tree of life and supermart, it offers several advantages.
 It is fast;
 source data is completely open;
-it requires no expert biological knowledge for any of their functionalities;
+it requires no expert biological knowledge from users for any of its functionalities;
 it allows exploration of alternative taxonomic and phylogenetic schemes;
 it allows rapid exploration of the effect of alternative divergence time hypothesis;
 it allows rapid synthesis in a number of different formats; <!-- we should add graphical options too-->
