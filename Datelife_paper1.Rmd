@@ -1,19 +1,17 @@
 ---
-output: pdf_document
-fontsize: 12pts
-textalign: left  # this does not work...
-geometry: margin = 1in
 bibliography: library.bib
 csl: systematic-biology.csl
-link-citations: yes
-# indent: true # this works
-# header-includes:
-#    - \setlength\parindent{24pt}  # this works too, but I'mg onna indent manually with 4 spaces
-# nope, 4 spaces indents are not recognized, they do something else
-linestretch: 2
+fontsize: 12pts
+geometry: margin = 1in
 header-includes:
-    - \usepackage[left]{lineno}
-    - \linenumbers
+- \usepackage[left]{lineno}
+- \linenumbers
+linestretch: 2
+link-citations: yes
+output:
+  word_document: default
+  pdf_document: default
+textalign: left
 ---
 
 Running head: DATELIFE: REVEALING THE DATED TREE OF LIFE <!--MAX 50 CHARACTERS, ALL CAPITALS-->
