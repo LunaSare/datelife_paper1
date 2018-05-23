@@ -77,11 +77,11 @@ For science communication, improve scientific discussions, time-framing
 other events of importance in other research areas.
 Comparative method: autocorrelation (phylogenetic relatedeness) corrections, phylogenetic signal
 -->
-Data from chronograms and data tables of divergence time estimates reported in scientific studies published since 1987 have been synthesised in the TimeTree of Life resource [@Hedges2006; @Hedges2015; @Kumar2017].
-TimeTree of Life platform allows searching ages of taxa from a chronogram synthesizing age data from more than three thousand (3 163) studies, encompassing almost a hundred thousand (97 085) species [@Kumar2017].
-<!--
--->
-This chronogram samples only between 0.097 and 3.236% of total earth species diversity (following taxonomic expert opinion on the global, extant species numbers, which ranges from 3 to 100 millions species [Mayr2010; Moran2011]),
+One inspiration for the DateLife project was the TimeTree project [@Hedges2006; @Hedges2015; @Kumar2017]. This project has aggregated chronograms from 3,163 studies, encompassing 97,085 species [@Kumar2017], and continues to grow. However, even in this gold standard resource, the included taxa only include between 0.097 and 3.236% of total species diversity (following taxonomic expert opinion on the global, extant species numbers, which ranges from 3 to 100 million species [Mayr2010; Moran2011]). One advantage of TimeTree is that it includes taxa from across the tree of life, versus more specialized chronograms focusing on plants [PHYLOMATIC], birds [JETZ ET AL BIRDTREE.ORG], and other groups. Users can use a web interface or a mobile app to receive information on divergence times for pairs of species, ______. It is of limited utility for scientific studies, however. The thousands of trees that have been entered are unavailable for examination or reuse; according to their FAQ, methods for allowing download of the data have been under discussion since 2015. There is no API allowing programmatic access to any data. The nearly hundred thousand taxon chronogram is not available with [@Kumar2017] or the TimeTree website, though the still substantial chronogram from @Hedges2015 is available. Large-scale, automated, data-mining is not allowed under the site's terms of use. As a science communication tool it is very powerful, since it has a friendly graphical interface, with informative while colorful outputs, that allows the general public to satisfy curiosity regarding their favorite organism or group of them.
+
+With this inspiration, a prototype DateLife service was developed over a series of phylotastic hackathons [__CITE__] at the National Evolutionary Synthesis Center. NSF funding allowed for the further development leading to this paper. A core goal has been openness of both the data sources and the code underlying the analyses.
+
+
 <!--
 [@Mora2011]
 eukaryotes and prokaryotes:
@@ -93,7 +93,6 @@ ttol_spp <- 97085
 (ttol_spp * 100) / 3e+6  # 3.236167
 (ttol_spp * 100) / 100e+6  # 0.097085
 -->
-but is currently one of the most important sources on divergence times, since it includes all main lineages of life (plants, animals, fungi, bacteria and archaea) and is currenty the largest chronogram in existence. As a science communication tool it is very powerful, since it has a friendly graphical interface, with informative while colorful outputs, that allows the general public to satisfy curiosity regarding their favorite organism or group of them. However, the primary data source and the synthetic chornogram are not publicly available, and large-scale, automated, data-mining is not allowed, minimizing its potential usefulness for the scientific community.
 <!--
 While its node-time search is very powerful, using available data to infer divergence time from lineages that have never been sequenced before, its timetree option is less powerful, their main flaw being that it does not provide source data.
 However, their primary database is not fully open, giving information on a per node basis. So, it is not possible to easily access information from original studies for a group of taxa (One would need to perform a pair of taxa search for all pairs from the group of interest).
@@ -153,11 +152,11 @@ Description
 DateLife is a service for searching and processing information on ages of any taxon <!--or group of taxa-->of interest, available in chronograms from public data repositories of published peer reviewed studies. With this data, it can also generate new taxon age information<!--by using expert available phylogenies and scaling them to absolute time using information on ages obtained from published chronograms,--> by calling a variety of external services and proved methods.
 It only requires as input a set of taxon names, in the form of a comma separated listing or vector, or of a phylogeny with taxon names on the tips.
 Taxon names can correspond to binomial species names or clades<!--common names (will we implement it?)-->.
-When taxon names are clades, DateLife pulls all accepted species names within the clade from OToL's reference taxonomy using a service of rphylotastic R package<!--citation-->.
+When taxon names are clades, DateLife pulls all accepted species names within the clade (up to OToL's limit of _____ species) from OToL's reference taxonomy using a service of rphylotastic R package<!--citation-->.
 Names belonging to subspecies or any other infraspecific category are treated as species.
 DateLife can process input names with the taxon name resolution service (TNRS), <!--which "corrects misspelled names and authorities, standardizes variant spellings, and converts nomenclatural synonyms to accepted names" (Boyle et al. 2013)-->which corrects misspelled names or typos, and standardizes variation in spelling and synonyms [@Boyle2013], increasing the probability to correctly find the queried taxa in the chronogram database. DateLife uses TNRS to compare names against OToL's reference taxonomy using a service from the R package rotl [@Michonneau2016]. <!--we'll implement the option to use other reference taxonomies in the future -->
 
-DateLife's main function searches taxon names across the chronogram database specified by the user. At the moment, it queries chronograms from OToL [@Hinchliff2015] and TreeBASE [@Piel2002]<!-- there is an earlier reference from 1994 but it does not exist in its journal database: Sanderson MJ, Donoghue MJ, Piel WH, Eriksson T: TreeBASE: a prototype database of phylogenetic analyses and an interactive tool for browsing the phylogeny of life. Am J Bot. 1994, 81 (6): 183--> repositories.
+DateLife's main function searches taxon names across the chronogram database specified by the user. At the moment, it queries chronograms from the OToL [@Hinchliff2015]<!-- there is an earlier reference from 1994 but it does not exist in its journal database: Sanderson MJ, Donoghue MJ, Piel WH, Eriksson T: TreeBASE: a prototype database of phylogenetic analyses and an interactive tool for browsing the phylogeny of life. Am J Bot. 1994, 81 (6): 183--> repository.
 DateLife identifies chronograms having at least two taxon names, and subset them to contain only the taxa of interest. It then stores taxon age information from each chronogram individually as a patristic matrix, named with the citation of the original study. This format allows a rapid summary in a number of different ways, including: 1) citations of the original studies containing the subset chronograms, 2) a list of subset chronograms' mrca ages, 3) a list of subset chronograms in newick or phylo format, 4) a table containing all information in html or R's data frame format, or 5) as a single chronogram summarized from subset chronograms using the supertree Super Distance Matrix (SDM) approach [@Criscuolo2006] or using the median of branch lengths. <!--(how to better explain the latter?? Also, I just discovered the median gives non ultrametric trees...).-->
 
 DateLife also stores information on input taxon presence/absence across subset chronograms. Users can choose to add ages of missing taxa to subset chronograms in different ways, depending on the amount of knowledge they want to input or how much they want to be involved in the steps of the addition process.
@@ -168,7 +167,7 @@ If OToL's synthetic tree is not satisfactorily resolved for the taxa of interest
 a set of lineages with sequence data from the Barcode Of Life Database (BOLD, <http://www.boldsystems.org/>), using the synthetic OToL (<https://tree.opentreeoflife.org>) as backbone, and to obtain divergence dates.
 It allows direct comparison of dates obtained with different markers
 available in BOLD (in plants and fungi in particular).-->
-To use information from a topological constraint, DateLife calls the congruification method described in [@Eastman2013] to find shared nodes between trees (congruent nodes). It then fixes their ages, and add ages to remaining nodes with a dating method that can be specified by the user. If users have access to biological data, thay can input a tree with branch lengths proportional to relative substitution rates as topological constraint. In this case, age data from congruent nodes will be used as calibration points.
+To use information from a topological constraint, DateLife calls the congruification method described in [@Eastman2013] to find shared nodes between trees (congruent nodes). It then fixes their ages, and add ages to remaining nodes with a dating method that can be specified by the user. If users have access to biological data, they can input a tree with branch lengths proportional to relative substitution rates as topological constraint. In this case, age data from congruent nodes will be used as calibration points.
 Age data from several chronograms can be combined and congruified to be used as calibration points in a single analysis.
 
 Several dating methods are implemented in DateLife.
@@ -187,7 +186,7 @@ Benchmark
 </span>
 <!-- Good to test 3 features on a package: performance, speed and scalability-->
 
-DateLife's code speed was tested on a 6 months old computer
+DateLife's code speed was tested on an Apple iMac
 with one 3.4 GHz Intel Core i5 processor. <!--No multiprocessor tests were performed-->
 We registered variation in computing time relative to number of input names <!--number of chronograms in database--> and DateLife service.
 Input processing increases roughly linearly with number of input taxon names, and increases considerably if tnrs service is activated (`r figure_runtime_main`).
@@ -259,6 +258,8 @@ Improvements, short and long-term:
 * fossils as calibrations: Using secondary calibrations can generate biased ages when using bayesian methods, mainly because we don't know what prior to give to secondary calibrations [@Schenk2016].
 * bayesian congruification
 * topological congruification
+
+Problems and caveats:
 
 
 
