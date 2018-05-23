@@ -57,6 +57,7 @@ It is usually obtained from hypothesis of character homology (alignments) when r
 <!--Models allow to take into account the nature of the fossil record: Given the characteristics of the fossilization process, the quality of dates inferred directly from it is not always considered the best.-->
 
 In the past decades, the possibility to obtain DNA sequences in large quantities from a wide variety of organisms became a reality, which, coupled to methodological development in phylogenetic and dating inference, allowed the application of molecular dating methods on a very large amount and diversity of organisms, greatly increasing the quantity of<!--organisms with--> data on taxon ages across the tree of life.
+<!-- figure showing growth on studies with age data from references table from ttol-->
 To date, there is a large amount of both fossil and molecular-based data on taxon ages and phylogenetic relationships in public repositories such as Dryad, TreeBASE and Open Tree of Life (OToL).
 OToL alone holds more than 200 chronograms. <!--cache updated jan 15 2018
 devtools::load_all(pkg = "~/Desktop/datelife")
@@ -93,7 +94,7 @@ ttol_spp <- 97085
 (ttol_spp * 100) / 3e+6  # 3.236167
 (ttol_spp * 100) / 100e+6  # 0.097085
 -->
-but is currently one of the most important sources on divergence times, since it includes all main lineages of life (plants, animals, fungi, bacteria and archaea) and is currenty the largest chronogram in existence. As a science communication tool it is very powerful, since it has a friendly graphical interface, with informative while colorful outputs, that allows the general public to satisfy curiosity regarding their favorite organism or group of them. However, the primary data source and the synthetic chornogram are not publicly available, and large-scale, automated, data-mining is not allowed, minimizing its potential usefulness for the scientific community.
+but is currently one of the most important sources on divergence times, since it includes all main lineages of life (plants, animals, fungi, bacteria and archaea) and is currenty the largest chronogram in existence. As a science communication tool it is very powerful, since it has a friendly graphical interface, with informative while colorful outputs, that allows the general public to satisfy curiosity regarding their favorite organism or group of them. However, the primary source of data and the synthetic chronogram are not publicly available, and large-scale, automated, data-mining is not allowed, minimizing its potential usefulness for the scientific community.
 <!--
 While its node-time search is very powerful, using available data to infer divergence time from lineages that have never been sequenced before, its timetree option is less powerful, their main flaw being that it does not provide source data.
 However, their primary database is not fully open, giving information on a per node basis. So, it is not possible to easily access information from original studies for a group of taxa (One would need to perform a pair of taxa search for all pairs from the group of interest).
