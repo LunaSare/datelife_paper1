@@ -3,7 +3,7 @@ output: pdf_document
 fontsize: 12pts
 textalign: left  # this does not work...
 geometry: margin = 1in
-bibliography: library.bib
+bibliography: library_red.bib
 csl: systematic-biology.csl
 link-citations: yes
 # indent: true # this works
@@ -17,6 +17,7 @@ header-includes:
 ---
 ```{r eval = TRUE, echo = FALSE}
 fig_workflow_main <- "Fig. 1"
+fig_workflow_all_functions <- "Vignette Fig. 1"
 fig_runtime_main <- "Fig. 2"  
 # make_datelife_query_plus_get_datelife_result
 ```
@@ -250,8 +251,8 @@ Generate new dates using all available DNA sequence information;
 Perform one global analysis using all available information;
 Problems or downsides: This might be time consuming for large groups and a lot of
 data curation and knowledge on the group of interest is still necessary. For example,
-<!--General issues with dating techniques:--> choosing correct fossils for calibration r
-equires a lot of expertise and knowledge on the group. An incorrect use of fossils
+<!--General issues with dating techniques:--> choosing correct fossils for calibration 
+requires a lot of expertise and knowledge on the group. An incorrect use of fossils
 can generate severe bias in dating results [@Sauquet2012c].
 <!--Data curation is necessary at some point (is this always true?)-->
 Hence, data curation is still an important part of any biological study. The research
@@ -275,7 +276,7 @@ DateLife is the main service for scaling phylogenetic trees in Phylotastic! syst
 It can be used through an R package <link to documentation>, a web interface
 (<http://www.datelife.org/query/>) and an API<!--(still not up, right?)-->.
 In here we present the first release of DateLife.
-It contains an improved databse of chronograms, more methods to summarize trees,
+It contains an improved database of chronograms, more methods to summarize trees,
 and new functions to visualize data.
 It also allows comparison of summary methods.
 
@@ -284,106 +285,47 @@ It also allows comparison of summary methods.
 Description
 </span>
 ```{r, echo = FALSE}
-fig_workflow_main_foot <- "Figure 1. Summarized DateLife workflow. Only main actions are shown."
+fig_workflow_main_foot <- paste("Stylized DateLife workflow. Detailed steps are shown in",  fig_workflow_all_functions)
 ```
 <!--(BOLD and OToL species names, are they homogeneous/standardized?-->
+The basic `DateLife` workflow is shown in `r fig_workflow_main` and consists of:
 
-DateLife is a service for searching and processing information on ages of any number
-of taxa <!--or group of taxa-->of interest, across chronograms available in public
-data repositories coming from published peer reviewed studies. It can also generate
-new taxon age information<!--by using expert available phylogenies and scaling them
-to absolute time using information on ages obtained from published chronograms,--> by l
-inking several external services and tested algorithms.
-It takes advantage of the rotl, ape, and geiger packages to gather, process, and
-present information.
+1) A user providing as input at least two taxon names, either as tip labels on a tree, or as a simple comma separated character string. The tree can be in newick or phylo format, and can be with or without branch lengths.
+2) `DateLife` then performs a search across its database of peer reviewed and curated chronograms; identifies and gets source trees with at least two matching input names; drops unmatching taxa from positively identified source trees; and finally transforms each source tree to a patristic matrix named by the citation of the original study. This format facilitates and greatly speeds up all further analyses and summary algorithms.
+3) The user can obtain different types of summaries from the source data including: a) all source chronograms, b) mrca ages of source chronograms, c) citations of studies where source chronograms were originally published, d) a summary table with all of the above, e) a single summary tree of all source chronograms, and f) a report of succesful matches per input taxon name across source chronograms.
+4) At this point, users can choose to use all or some source data as calibration points to date a tree of their own making or choosing. <!--, a taxonomic tree-->
+5) Users can also simulate age and/or phylogenetic data of input taxa not found in the database. A variety of algorithms are available for this purpose.
+6) Finally, users can easily view results graphically as well as construct their own graphs using inbuilt `DateLife` graphic generators. 
 
-It only requires a set of taxon names as input, in the form of a comma separated
-listing or vector, or of a phylogeny with taxon names on the tips.
-Taxon names can correspond to binomial species names or clades
-<!--common names (will we implement it?)-->.
-When taxon names are clades, DateLife pulls all accepted species names within the
-clade (up to OToL's limit of _____ species) from OToL's reference taxonomy using
-a service of rphylotastic R package<!--citation-->.
-Names belonging to subspecies or any other infraspecific category are treated as
+<!--To perform the former tasks:-->
+`DateLife`'s chronogram database is currently built from Open Tree of Life (OToL)'s [@Hinchliff2015] tree repository. Among currently existing repositories (e.g., TreeBAse, Dryad), OToL's metadata rich tree store  is the only one meeting the requirements for proper/accurate automatized handling of trees.
+Input taxon names accepted by `DateLife` are binomial species names or clades. <!--common names (implemented yet?)--> Taxon searches are performed at the species level, so when input names correspond to higher clades, `DateLife` pulls all accepted species names within the
+clade from OToL's reference taxonomy to perform the search.
+Input names belonging to subspecies or any other infraspecific category are treated as
 species.
-DateLife can process input names with the taxon name resolution service (TNRS),
+DateLife also processes input names with the taxon name resolution service (TNRS),
 <!--which "corrects misspelled names and authorities, standardizes variant spellings,
 and converts nomenclatural synonyms to accepted names" (Boyle et al. 2013)-->
-which corrects misspelled names or typos, and standardizes variation in spelling
-and synonyms [@Boyle2013], increasing the probability to correctly find the queried
-taxa in the chronogram database. DateLife uses TNRS to compare names against OToL's
-reference taxonomy using a service from the R package rotl [@Michonneau2016].
-<!--we'll implement the option to use other reference taxonomies in the future -->
+which corrects potentially misspelled names and typos, and standardizes variation in spelling
+and synonyms <!--to a taxonomic reference of users choosing, degfault to otol taxonomy -->[@Boyle2013], increasing the probability to correctly find the queried
+taxa in `DateLife`'s chronogram database.
 
-DateLife's main function searches taxon names across the chronogram database specified
-by the user. At the moment, it queries chronograms from OToL [@Hinchliff2015]
-<!-- it cannot query chronograms from TreeBASE -there is an earlier reference from
-1994 but it does not exist in its journal database: Sanderson MJ, Donoghue MJ, Piel
-WH, Eriksson T: TreeBASE: a prototype database of phylogenetic analyses and an interactive
-tool for browsing the phylogeny of life. Am J Bot. 1994, 81 (6): 183--> repository.
-DateLife identifies chronograms having at least two taxon names, and subset them
-to contain only the taxa of interest. It then stores taxon age information from
-each chronogram individually as a patristic matrix, named with the citation of the
-original study. This format allows a rapid summary in a number of different ways,
-including:
-1) citations of the original studies containing the subset chronograms,
-2) a list of mrca ages of subset chronograms,
-3) a list of complete subset chronograms in newick or phylo format,
-4) a table containing all information retrieved in html or R's data frame format, or
-5) a single chronogram summarized from subset chronograms using the Super Distance Matrix (SDM) supertree construction approach [@Criscuolo2006] or using the median of branch lengths. <!--(how to better explain the latter?? Also, I just discovered the median gives non ultrametric trees...).-->
-
-DateLife also stores information on input taxon presence/absence across subset chronograms.
-Users can choose to add ages of missing taxa to subset chronograms in different
-ways, depending on the amount of knowledge they want to input or how much they want
-to be involved in the steps of the addition process.
-If users have no access to biological information (i.e., a character, DNA or protein
-matrix), missing taxa can be added to any chronogram simply at random, or by following
-taxonomic or phylogenetic knowledge from expert sources. There are a wide number
-of open reference taxonomies available, such as the Catalogue of Life [@Roskov2017]
-or the NCBI taxonomy database [@Federhen2012]. Expert phylogenies (with or without
-branch lengths) to be used as topological constraint (backbone) can also be obtained
-from a number of public repositories, such as OToL [@Hinchliff2015], TreeBASE [@Piel2002]
-and Dryad (<https://www.datadryad.org//>).
-At the moment, DateLife only uses OToL's synthetic tree and reference taxonomy as
-expert knowledge to automatically add missing taxa to chronograms. Alternatively,
-users can input a reference taxonomy or topological constraint of their choosing
-or making. <!-- at some point we will implement the possibility for users to choose
-different reference taxonomies automatically-->
-If OToL's synthetic tree is not satisfactorily resolved for the taxa of interest,
-DateLife can construct a sequence data matrix from DNA markers available from the
-Barcode of Life Database (BOLD; @Ratnasingham2007), to attempt to further resolve
-polytomies. It will follow OToL's synthetic tree as backbone.
-<!--This molecular tree can then be dated with chronosMPL from the ape package, but is it really needed?? To estimate node ages chronosMPL uses mean path length method from Britton et al. 2002-->
-<!--It can rapidly construct trees with branch lengths from
-a set of lineages with sequence data from the Barcode Of Life Database (BOLD, <http://www.boldsystems.org/>), using the synthetic OToL (<https://tree.opentreeoflife.org>) as backbone, and to obtain divergence dates.
-It allows direct comparison of dates obtained with different markers
-available in BOLD (in plants and fungi in particular).-->
-To use information from a topological constraint, DateLife calls the congruification
-method described in [@Eastman2013] to find shared nodes between trees (congruent
-nodes). It then fixes their ages, and add ages to remaining nodes with a dating
-method that can be specified by the user. If users have access to biological data,
-they can input a tree with branch lengths proportional to relative substitution
-rates as topological constraint. In this case, age data from congruent nodes will
-be used as calibration points.
-Age data from several chronograms can be combined and congruified to be used as
-calibration points in a single analysis.
-
-Several dating methods are implemented in DateLife.
+Source chronogram summary tree can be assembled using the Super Distance Matrix (SDM) supertree construction approach [@Criscuolo2006] or using the median of branch lengths and the hierarchical clustering method <!-- of ttol-->. <!--Also, I just discovered the median gives non ultrametric trees... but I thonk it is fixed now, check it!).--> 
+Tree dating and simulation options are performed with various algorithms:
 Branch Length Adjuster (BLADJ) is a simple algorithm to distribute ages of undated
 nodes evenly, which minimizes age variance in the chronogram [@Webb2008].
-DateLife implements BLADJ from the development R version of phylocom's R package
-[@Webb2008], phylocomr (<https://github.com/ropensci/phylocomr>). It can only be
-used when there is a topological constraint with no branch lengths.
-PATHd8 is a non-clock, rate-smoothing method [@Britton2007] to date trees. It is
-also called through R. <!--It could be used with a reference taxonomy, if we provide a tree with politomies-->
+PATHd8 is a non-clock, rate-smoothing method [@Britton2007] to date trees. 
 treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method
-[@Smith2012]. It is called through R.
-MrBayes program [@Huelsenbeck2001; @Ronquist2003] can be used when adding taxa at
+[@Smith2012].
+MrBayes [@Huelsenbeck2001; @Ronquist2003] can be used when adding taxa at
 random, following a reference taxonomy or a topological constraint. It draws ages
 from a pure birth model, as implemented by Jetz and collaborators [-@Jetz2012].
-DateLife calls MrBayes trough an R function.
+To apply calibrations to a tree, congruification method described in [@Eastman2013] to find shared nodes between trees (congruent nodes).
 
-DateLife can also correct negative branch lengths in several ways.
+To gather, process, and present information, `DateLife` builds up from functions available in several R packages including rotl [@Michonneau2016], ape[@Paradis2004], geiger[@Harmon2008], paleotree[@Bapst2012a], bold[@Chamberlain2018], phytools[@Revell2012], taxize[@Chamberlain2013; @Chamberlain2018], phyloch[@Heibl2008], phylocomr[@Ooms2018] and rphylotastic[@Omeara2019].
+
+Details on each step are further developed in `DateLife`'s R package documentation `datelife workflow` vignette at (<https://LINK>).
+
 
 <!--**Benchmark: Testing DateLife computing performance**-->
 <span style="font-variant:small-caps;">
@@ -484,7 +426,8 @@ it allows rapid synthesis in a number of different formats; <!-- we should add g
 it facilitates reproducibility of analyses;
 
 Improvements, short and long-term:
-* fossils as calibrations: Using secondary calibrations can generate biased ages when using bayesian methods, mainly because we don't know what prior to give to secondary calibrations [@Schenk2016].
+* fossils as calibrations: Using secondary calibrations can generate biased ages when using bayesian methods, mainly because we don't know what prior to give to secondary calibrations
+[@Schenk2016].
 * bayesian congruification
 * topological congruification
 
@@ -515,8 +458,9 @@ Supplementary Material
 </span>
 
 Supplementary material, including code files and
-online-only appendices, can be found in the GitHub
-repository <!-- Dryad also? since it is all in github already-->
+online-only appendices and vignettes, can be found in the GitHub
+repository of the paper at (<https://github.com/LunaSare/datelife_paper1>) as well as in the package vignettes <!-- Dryad also? since it is all in github already-->
+and are also available from the Dryad Digital Repository at LINK.
 
 <!--**Funding**-->
 <span style="font-variant:small-caps;">
@@ -547,13 +491,12 @@ the scientists who curate them for deposition in OpenTree.
 The US National Science Foundation (NSF) for funding nearly all the above, in addition
 to the ABI grant that funded this project itself.
 
+```{r pressure, out.width="100%", include=TRUE, fig.align="center", fig.cap=fig_workflow_main_foot, echo=FALSE}
+knitr::include_graphics("fig1.pdf", dpi = 360)
+```
 
 <!--**References**-->
 <span style="font-variant:small-caps;">
 References
 </span>
 
-
-```{r pressure, out.width="100%", include=FALSE, fig.align="center", fig.cap=fig_workflow_main_foot, echo=FALSE}
-knitr::include_graphics("fig1.pdf", dpi = 360)
-```
