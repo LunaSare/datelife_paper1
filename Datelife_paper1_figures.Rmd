@@ -1,0 +1,27 @@
+---
+output: pdf_document
+fontsize: 12pts
+textalign: left  
+geometry: margin = 1in
+bibliography: library_red.bib
+csl: systematic-biology.csl
+link-citations: yes
+linestretch: 2
+header-includes:
+  - \usepackage[left]{lineno}
+  - \linenumbers
+---
+
+```{r setup, echo = FALSE}
+source("Datelife_paper1_global.R")
+```
+
+```{r pressure, out.width="100%", include=TRUE, fig.align="center", fig.cap=fig_workflow_main_foot, echo=FALSE}
+knitr::include_graphics("fig1.pdf", dpi = 560)
+```
+
+```{r eval = TRUE, results = 'asis', out.width="100%", include=TRUE, fig.align="center", fig.cap=fig_runtime_main_foot, echo=FALSE}
+download.file(url = "https://github.com/phylotastic/datelife/raw/master/data-raw/benchmark/runtime_tests/2_tests/2_random_spp_names/mdq_plus_gdr_2018.05.29_fill.pdf", destfile = "fig_runtime_main.pdf", mode="wb")
+knitr::include_graphics("fig_runtime_main.pdf", dpi = 560)
+
+```
