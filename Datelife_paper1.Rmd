@@ -166,8 +166,8 @@ Description
 <!--(BOLD and OToL species names, are they homogeneous/standardized?-->
 The basic `DateLife` workflow is shown in `r fig_workflow_main` and consists of:
 
-1) A user providing as input at least two taxon names, either as tip labels on a tree, or as a simple comma separated character string. The tree can be in newick or phylo format, and can be with or without branch lengths.
-2) `DateLife` then performs a search across its database of peer reviewed and curated chronograms; identifies and gets source trees with at least two matching input names; drops unmatching taxa from positively identified source trees; and finally transforms each source tree to a patristic matrix named by the citation of the original study. This format facilitates and greatly speeds up all further analyses and summary algorithms.
+1) A user providing at least two taxon names as input, either as tip labels on a tree, or as a simple comma separated character string. The tree can be in newick or phylo format, and can be with or without branch lengths.
+2) `DateLife` then performs a search across its database of peer reviewed and curated chronograms; identifies and gets source trees with at least two matching input names; drops unmatching taxa from positively identified source trees; and finally transforms each source tree to a patristic matrix named by the citation of the original study. This format facilitates and greatly speeds up all further analyses and summarization algorithms.
 3) The user can obtain different types of summaries from the source data including: a) all source chronograms, b) mrca ages of source chronograms, c) citations of studies where source chronograms were originally published, d) a summary table with all of the above, e) a single summary tree of all source chronograms, and f) a report of succesful matches per input taxon name across source chronograms.
 4) At this point, users can choose to use all or some source data as calibration points to date a tree of their own making or choosing. <!--, a taxonomic tree-->
 5) Users can also simulate age and/or phylogenetic data of input taxa not found in the database. A variety of algorithms are available for this purpose.
@@ -175,7 +175,7 @@ The basic `DateLife` workflow is shown in `r fig_workflow_main` and consists of:
 
 <!--To perform the former tasks:-->
 `DateLife`'s chronogram database is currently built from Open Tree of Life (OToL)'s
-[@Hinchliff2015] tree repository. Among currently existing repositories (e.g., TreeBAse,
+[@Hinchliff2015] tree repository. Among currently existing repositories (e.g., TreeBase,
 Dryad), OToL's metadata rich tree store is the only one meeting the requirements
 for proper/accurate automatized handling of trees.
 Input taxon names accepted by `DateLife` are binomial species names or clades.
@@ -327,7 +327,11 @@ Improvements, short and long-term:
 Problems and caveats:
 Not many databases, only OToL
 Why TreeBase is not very useful for us? Be precise.
-
+Are these chronograms reliable to study evolutionary patterns, such as species diversification?
+DateLife can be seen as an open resource to know the current state of knowledge on lineage divergence times.
+Whether chronograms obtained using this original data can be used reliably to study complicated patterns of evolution is still uncertain.
+If all, la facilidad para obtener hipotesis de tiempo de divergencia nos ayudará a evaluar la capacidad de los cronogramas para estudiar otros fenomenos evolutivos.
+Por ahora, no podemos aseverar que estos cronogramas puedan usarse para todo tipo de analisis.
 
 
 <!--**Availability**-->
