@@ -7,3 +7,5 @@ pandoc_convert("Datelife_paper1.md", to="pdf", citeproc = TRUE, output = "Dateli
 # To create a pdf with pandoc, use the latex or beamer writer and specify
 # an output file with .pdf extension (pandoc -t latex -o filename.pdf).
 # Error: pandoc document conversion failed with error 9
+
+rmarkdown::render(input = "~/Desktop/datelife_paper1/Datelife_paper1.Rmd", output_format = "pdf_document")
