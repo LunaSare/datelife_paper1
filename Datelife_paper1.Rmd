@@ -173,11 +173,10 @@ DateLife is the main service for scaling phylogenetic trees in Phylotastic! syst
 It can be used through an R package <link to documentation>, a web interface
 (<http://www.datelife.org/query/>) and an API<!--(still not up, right?)-->.
 
-<!--DESCRIPTION of Datelife-->
-<span style="font-variant:small-caps;">
-Description
-</span>
 
+\begin{center}
+\textsc{Description}
+\end{center}
 <!--(BOLD and OToL species names, are they homogeneous/standardized?-->
 The basic `DateLife` workflow is shown in figure \ref{fig:workflow} and consists of:
 
@@ -234,11 +233,10 @@ and rphylotastic [@Omeara2019].
 Details on each step are further developed in `DateLife`'s R package documentation
 `datelife workflow` vignette at (<https://LINK>).
 
-
+\begin{center}
+\textsc{Benchmark}
+\end{center}
 <!--**Benchmark: Testing DateLife computing performance**-->
-<span style="font-variant:small-caps;">
-Benchmark
-</span>
 <!-- Good to test 3 features on a package: performance, speed and scalability-->
 
 `DateLife`'s code speed was tested on an Apple iMac
@@ -260,9 +258,7 @@ Adding dates processing time
 get_bold_otol_tree running time
 <!-- test improvement in synthetic tree after using bold sequences. Is it really better resolved?-->
 
-<!--
-Speed of web interface and of r package (in computers with different capacities?)
--->
+<!--Speed of web interface and of r package (in computers with different capacities?)-->
 `DateLife`'s code performance was evaluated with a set of unit tests designed and
 implemented with the R package testthat [@RCoreTeam2018]. These tests were run both
 locally –using the devtools package [@RCoreTeam2018]– and on a public server –via
@@ -270,11 +266,10 @@ GitHub– using the continuous integration tool Travis CI (<//travis-ci.org>). A
 present, unit tests cover more than 50% (for now) of `DateLife`'s code (<https://codecov.io/gh/phylotastic/datelife>). <!-- unit test make code robust, verifiable, debuggable, -->
 
 
+\begin{center}
+\textsc{Example}
+\end{center}
 <!--**Biological example: Testing DateLife accuracy**-->
-<span style="font-variant:small-caps;">
-Biological example
-</span>
-
 <!--Bird (or reptile) chronograms, too long time...
 finches is good
 nothofagus
@@ -303,12 +298,9 @@ Vignette will show the R code used to generate the outputs displayed here and in
 datelife examples will explain more on what is done in every step.
 -->
 
-
-
-<!--**Discussion/Conclusions** there is not a discussion section in this type of sys Bio contributions-->
-<span style="font-variant:small-caps;">
-Conclusions
-</span>
+\begin{center}
+\textsc{Conclusions}
+\end{center}
 
 Taxon ages are key to many areas of evolutionary studies: trait evolution, species
 diversification, biogeography, macroecology and more. Obtaining these ages is difficult,
@@ -355,36 +347,31 @@ If all, la facilidad para obtener hipotesis de tiempo de divergencia nos ayudar�
 Por ahora, no podemos aseverar que estos cronogramas puedan usarse para todo tipo de analisis.
 
 
-<!--**Availability**-->
-<span style="font-variant:small-caps;">
-Availability
-</span>
+\begin{center}
+\textsc{Availability}
+\end{center}
 
-DateLife is free and open source and it can be used through its current website
-<http://www.datelife.org/query/>, or through Phylotastic!'s web portal <http://phylo.cs.nmsu.edu:3000/>.
-RStudio's Shiny Server and the shiny package open infrastructure are used to maintain
-the former. Also Docker.
-DateLife can also be used locally through its R package. The stable version is available
+`Datelife` is free and open source and it can be used through its current website
+<http://www.datelife.org/query/>, through its R package, and through Phylotastic's project web portal <http://phylo.cs.nmsu.edu:3000/>.
+`Datelife`'s website is maintained by RStudio's shiny server and the shiny package open infrastructure, as well as Docker.
+`DateLife`'s R package stable version is available
 for installation from the CRAN repository (<https://cran.r-project.org/package=datelife>)
-using the command `install.packages(pkgs = "datelife")` from R. Development versions
+using the command `install.packages(pkgs = "datelife")` from within R. Development versions
 are available from GitHub repository (<https://github.com/phylotastic/datelife>)
-and can be installed using the devtools R package command `install_github("phylotastic/datelife")`.
+and can be installed using the command `devtools::install_github("phylotastic/datelife")`.
 
-<!--**Supplementary Material**-->
-<span style="font-variant:small-caps;">
-Supplementary Material
-</span>
 
-Supplementary material, including code files and
-online-only appendices and vignettes, can be found in the GitHub
-repository of the paper at (<https://github.com/LunaSare/datelife_paper1>) as well
-as in the package vignettes <!-- Dryad also? since it is all in github already-->
-and are also available from the Dryad Digital Repository at LINK.
+\begin{center}
+\textsc{Supplementary Material}
+\end{center}
 
-<!--**Funding**-->
-<span style="font-variant:small-caps;">
-Funding
-</span>
+Code used to generate all versions of this manuscript, the biological examples, as well as the software benchmark can be found in the GitHub repositories <https://github.com/LunaSare/datelife_paper1>, <https://github.com/LunaSare/datelife_examples>, and <https://github.com/LunaSare/datelife_benchmark>, respectively.
+<!-- Vignettes
+Dryad also?? since it is all in github already, maybe not necessary-->
+
+\begin{center}
+\textsc{Funding}
+\end{center}
 
 Funding was provided by NSF grant 1458603
 
@@ -395,10 +382,9 @@ Open Tree of Life
 University of Tennessee, Knoxville
 
 
-<!--**Acknowledgements**-->
-<span style="font-variant:small-caps;">
-Acknowledgements
-</span>
+\begin{center}
+\textsc{Acknowledgements}
+\end{center}
 
 We thank colleagues (students and postdocs) at the O'Meara Lab at the University
 of Tennesse Knoxville for suggestions, discussions and software testing.
