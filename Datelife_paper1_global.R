@@ -6,7 +6,7 @@ download.file(url = "https://github.com/phylotastic/datelife/raw/b3532e70b679272
               destfile = "fig_runtime1.pdf", mode="wb")
 # fig_runtime1_cap <- "Computation time of input processing and search across `DateLife`s 
 #   chronogram database"
-download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringilidae_LTTplot_phyloall.pdf",
+download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_LTTplot_phyloall.pdf",
               destfile = "fig_schronograms1.pdf", mode="wb")
 # fig_schronograms_cap <- "Lineage through time (LTT) plots of source chronograms containing 
 #   all or a subset of species from the bird family Fringillidae of true finches. Arrows indicate maximum age of each chronogram. Numbers 
@@ -14,8 +14,13 @@ download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/do
 #   4) [@claramunt2015new], 5) [@gibb2015new], 6) [@Hedges2015], 7) [@hooper2017chromosomal],
 #   8) [@Jetz2012], 9) [@price2014niche]"
   
-download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringilidae_LTTplot_crossval_bladj.pdf",
+download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_LTTplot_summary_chronograms2.pdf",
+              destfile = "fig_summaries.pdf", mode="wb")
+download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_LTTplot_crossval_bladj.pdf",
               destfile = "fig_crossval_bladj.pdf", mode="wb")
-# fig_crossval_bladj
+download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_lttplot_crossval_pathd8_summ1.pdf",
+              destfile = "fig_crossval_boldsumm.pdf", mode="wb")
+
+
 source("frin_plan.R")
 loadd() # loads all the targets listed in the workflow plan of the previous `make()`
