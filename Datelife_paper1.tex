@@ -113,28 +113,22 @@ Corresponding authors: \href{mailto:sanchez.reyes.luna@gmail.com}{\nolinkurl{san
 
 \newpage
 
-Supersmart is an open tool but not easy to use, still requires a lot of curation and knowledge.
-
 Time of lineage divergence
-constitutes in many ways the fundamental/main knowledge necessary for evolutionary
+constitutes in many ways a fundamental piece of information for evolutionary
 understanding.
-Coupled to species number and distribution, it is the main information necessary
-for the study of diversification processes (i.e., the tempo and mode of speciation
+Coupled to species number and distribution, it allows studying the tempo and mode of speciation
 and extinction),
-central for the understanding of how biodiversity
+central for understanding of how biodiversity
 patterns are shaped across space, time and clades (Morlon \protect\hyperlink{ref-Morlon2014}{2014}).
-Evolutionary understanding also relies on comparative studies, for which knowing
-the time context for all life is crucial. Efforts to have a whole tree of life have
-been great and here are some examples.
 In the past two decades, the possibility to obtain good quality DNA sequences
 coupled to methodological developments in phylogenetic and dating inference, allowed
 the application of molecular dating methods on a very large amount and diversity
-of organisms, greatly increasing the quantity of data on taxon
+of organisms, greatly increasing the quantity and quality of data on taxon
 ages across the tree of life.
-To date, there is a large amount of both fossil and molecular-based data on taxon
-ages and phylogenetic relationships in public repositories such as Dryad, TreeBASE
+To date, there is a large amount of
+data on taxon ages and phylogenetic relationships in public repositories such as Dryad, TreeBASE
 and Open Tree of Life (OToL).
-OToL alone holds more than 200 chronograms.
+OToL alone hosts now more than 200 chronograms.
 Methods to include living and fossil lineages are in continued development and increased
 usage by the community,
 which coupled to better sharing data practices, are greatly contributing to the
@@ -146,8 +140,8 @@ However, even in this gold standard resource, the included taxa only encompass b
 0.097 and 3.236\% of total species diversity (following taxonomic expert opinion
 on the global, extant species numbers, which ranges from 3 to 100 million species
 {[}Mayr2010; Moran2011{]}). One advantage of TimeTree is that it includes taxa from
-across the tree of life, versus more specialized chronograms focusing on plants
-{[}PHYLOMATIC{]}, birds {[}JETZ ET AL BIRDTREE.ORG{]}, and other groups. Users can choose
+across the tree of life, versus more specialized chronogram repositories focusing on plants
+(Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005}), birds (Jetz et al. \protect\hyperlink{ref-Jetz2012}{2012}), and fish . Users can choose
 between a web interface or a mobile app to receive information on divergence times
 for the evolutionary history of a lineage, pairs of taxa, all lineages within a
 taxon, or a list of taxa. As a science communication tool, TimeTree project is
@@ -168,13 +162,13 @@ TimeTree website, though the still substantial chronogram from a previous public
 Despite its great importance, analytical tools to summarize available information
 on taxon ages for the scientific community are still lacking.
 We identified several aspects that might have so far delayed the exploitation of
-existing data. First, original chronograms available publicly are scattered across
-various repositories (otol tree store, dryad, treebase, journals supplementary data)
-usually with different formats too.
+existing data. First, original chronograms available publicly are scattered across repositories
+and journals supplementary data, usually with different formats too.
 Second, lineage names due to taxonomic idiosincracy can be different among studies
 and manual curation of that is usually necessary.
 Third, data curation
 Recent advances on this area (e.g., supersmart) aim to:
+Supersmart is an open tool but not easy to use, still requires a lot of curation and knowledge.
 Generate new dates using all available DNA sequence information;
 Perform one global analysis using all available information;
 Problems or downsides: This might be time consuming for large groups and a lot of
@@ -196,8 +190,8 @@ of phylotastic hackathons (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013
 In this paper we present the first formal description of \texttt{datelife}, featuring an improved database of chronograms, more methods to summarize trees, and new functions to visualize data, as well as comparisons of summary trees.
 \texttt{datelife} is the main service for scaling phylogenetic trees in Phylotastic! system
 (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013})
-It can be used through an R package , a web interface
-(\url{http://www.datelife.org/query/}) and an API.
+It can be used through its R package , and a web interface
+(\url{http://www.datelife.org/query/}).
 
 \begin{center}
 \textsc{Description}
@@ -284,7 +278,7 @@ Data from these source chronograms was used to generate two types of summary chr
 It is not certain if these chronograms can be used to perform downstream evolutionary analyses. There is currently wide interest in determining this. However, it is certain that these chronograms are useful for\ldots{}
 
 Data from source chronograms was also used to date tree topologies with no branch length information and trees with branch lengths in relative substitution rates (Figs. \ref{fig:cvbladj} and \ref{fig:cvbold}). As a form of cross validation, we used tree topologies from each study and calibrated them using information from all other source chronograms. In the absence of branch length data, the ages of internal nodes were approximately recovered in almost all cases (except for studies 3, and 5; Fig. \ref{fig:cvbladj}). Maximum tree ages were only approximately recovered in one case (study 2; Fig. \ref{fig:cvbladj}).
-Branch lengths were successfully generated using the BOLD database for all source chronograms. However, dating with PATHd8 (using congruified calibrations) was only successful in\\
+Branch lengths were successfully generated using the BOLD database for all source chronograms. However, dating with PATHd8 (using congruified calibrations) was only successful in
 three cases (studies 3, 5, and 9; Fig. \ref{fig:cvbold}). From these, two trees have a different sampling than the original source chronogram, mainly because DNA data for some species is absent from the BOLD. Maximum ages are quite different from source chronograms, but this might be explained also by the differences in sampling between source chronograms and BOLD trees.
 More examples and details can be consulted in \url{https://github.com/LunaSare/datelife_examples}.
 
@@ -494,6 +488,9 @@ Stoltzfus A., Lapp H., Matasci N., Deus H., Sidlauskas B., Zmasek C.M., Vaidya G
 \leavevmode\hypertarget{ref-Webb2008}{}%
 Webb C.O., Ackerly D.D., Kembel S.W. 2008. Phylocom: Software for the analysis of phylogenetic community structure and trait evolution. Bioinformatics. 24:2098--2100.
 
+\leavevmode\hypertarget{ref-webb2005phylomatic}{}%
+Webb C.O., Donoghue M.J. 2005. Phylomatic: Tree assembly for applied phylogenetics. Molecular Ecology Notes. 5:181--183.
+
 \newpage
 
 \begin{center}
@@ -524,7 +521,7 @@ LTT plots showing results from the cross-validation analyses of trees without br
 \begin{center}
 \textsc{Figure \ref{fig:cvbold}}
 \end{center}
-LTT plots showing results from the cross-validation analyses of trees with branch length reconstructed with data from the Barcode of Life Database (BOLD) dated using PATHd8. We could construct a tree with branch lengths for all source chronograms. However, dating with PATHd8 was only successfull in three source chronograms shown here.
+LTT plots showing results from the cross-validation analyses of trees with branch length reconstructed with data from the Barcode of Life Database (BOLD) dated using PATHd8. We could construct a tree with branch lengths for all source chronograms. However, dating with PATHd8 was only successful in three source chronograms shown here.
 
 \newpage
 
