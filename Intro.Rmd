@@ -1,0 +1,139 @@
+---
+output:
+  bookdown::pdf_document2:
+    keep_tex: yes
+    toc: false
+textalign: left  # this does not work...
+geometry: margin = 1in
+bibliography: library_red.bib
+csl: systematic-biology.csl
+link-citations: yes
+linestretch: 2
+header-includes:
+    - \usepackage[left]{lineno}
+    - \linenumbers
+nocite: |
+  @barker2012going, @barker2015new, @burns2014phylogenetics, @claramunt2015new, @gibb2015new, @Hedges2015, @hooper2017chromosomal, @Jetz2012, @price2014niche
+---
+  
+<!--INTRODUCTION: 1st paragraph: general statement that the field knows to be true and important-->
+Time of lineage divergence <!--alt lineages: named biological entities, taxon ages?-->
+constitutes a fundamental piece of information for evolutionary
+understanding in many areas of research, from developmental to conservation biology [@Felsenstein1985a; @Webb2000]. This information can be obtained from fossils and from molecular dating studies. The developments in DNA sequencing and phylogenetic dating inferences have encouraged/spurred the application of molecular dating methods to a very large diversity of organisms, greatly increasing the quantity 
+<!-- and improving the quality  (do we know this? we would expect thatm but there is no analysis on that really...)-->
+of data on taxon ages across the tree of life.
+Along with phylogenetic relationships, it allows testing alternative
+evolutionary hypothesis in many areas of research, from developmental to conservation biology [@Felsenstein1985a; @Webb2000].
+It has been shown that only a bit of information on time of divergence can improve inferences of phylogenetic distance @Webb2008 bladj
+<!--comparative studies, in general, for which knowing
+the time context for all life is crucial.-->
+Together with geographical distribution patterns, it is a crucial component of historical biogeography studies [@posadas2006historical].
+Coupled to species number, it allows studying the tempo and mode of speciation and extinction,
+<!-- crucial/vital/critical/essential -->
+central for understanding how biodiversity
+patterns are shaped across space, time, and clades [@Morlon2014].
+<!-- Efforts to have a whole tree of life have been great and here are some examples. -->
+<!--INTRODUCTION: 2nd paragraph: important advances in the field-->
+In the past two decades, the possibility to obtain good quality DNA sequences
+<!-- from a wide variety of organisms became a reality, which,  -->
+coupled to methodological developments in phylogenetic and dating inference, allowed
+the application of molecular dating methods to a very large diversity
+of organisms, greatly increasing the quantity and quality of<!--organisms with--> data on taxon ages across the tree of life.
+<!-- figure showing growth on studies with age data from references table from ttol-->
+To date, there is a large amount of
+<!-- both fossil and molecular-based  -->
+data on taxon ages and phylogenetic relationships in public repositories such as Dryad, TreeBASE
+and Open Tree of Life (OToL).
+<!-- pbdb ??-->
+<!--OToL alone hosts now more than 200 chronograms. Cache updated jan 15 2018
+devtools::load_all(pkg = "~/Desktop/datelife")
+length(opentree_chronograms$trees) names(opentree_chronograms)
+-->
+<!--How many trees? How many dated trees?-->
+<!-- Methods to include living and fossil lineages are in continued development and increased -->
+<!-- usage by the community<!--total evidence and revbayes (fossilized birth-death)-->, -->
+<!-- which coupled to better sharing data practices, are greatly contributing to the -->
+<!-- accumulation in number and type of available data on taxon ages. -->
+
+<!--INTRODUCTION: 3rd paragraph: problems associated-->
+The TimeTree project [@Hedges2006; @Hedges2015; @Kumar2017] has aggregated chronograms
+from 3,163 studies, encompassing 97,085 species [@Kumar2017], and continues to grow.
+However, even in this gold standard resource, the included taxa only encompass between
+0.097 and 3.236% of total species diversity (following taxonomic expert opinion
+on the global, extant species numbers, which ranges from 3 to 100 million species
+[Mayr2010; Moran2011]). One advantage of TimeTree is that it includes taxa from
+across the tree of life, versus more specialized chronogram repositories focusing on land plants
+[@stevens2001apw] and mammals [@webb2005phylomatic], birds [@Jetz2012], and fish [@chang2019r]. Users can choose
+between a web interface or a mobile app to receive information on divergence times
+for the evolutionary history of a lineage, pairs of taxa, all lineages within a
+taxon, or a list of taxa. As a science communication tool, TimeTree project is
+very powerful: it has a friendly graphical interface, with informative and colorful
+outputs, that allows the general public to satisfy curiosity regarding a particular
+organism of interest or group of them. It is of limited utility for scientific
+studies, however. The thousands of trees that have been entered are unavailable
+for examination or reuse; according to the creators (see TimeTree web FAQ), methods
+for allowing data downloading have been under discussion for the past several years
+yet the primary data remain closed. Moreover, there is no Application Programming
+Interface (API) allowing programmatic access to any data, greatly impairing the
+possibility of large-scale, automated data-mining, which is not allowed under TimeTree
+website's terms of use. The nearly hundred thousand taxon summary chronogram generated
+from TimeTree resources is not available with its publication [@Kumar2017] or the
+TimeTree website, though the still substantial chronogram from a previous publication
+[@Hedges2015] was made available at OToL.
+<!--What led to datelife development?
+Describe public and research necessities covered by datelife
+It is important to use available data on time frame of lineage origin:
+To know the state of dating for a group of interest:
+What range of estimated ages exist already? Are fossil and molecular
+time frames coherent? (e.g., [@Magallon2015c]).
+To construct a time tree of life.
+For science communication, improve scientific discussions, time-framing
+other events of importance in other research areas.
+Comparative method: autocorrelation (phylogenetic relatedeness) corrections, phylogenetic signal
+-->
+
+<!--INTRODUCTION: 4th paragraph-->
+Despite its great importance, analytical tools to summarize available information
+on taxon ages for the scientific community are still lacking.
+We identified several aspects that might have so far delayed the exploitation of
+existing data. First, original chronograms available publicly are scattered across repositories
+<!-- (otol tree store, dryad, treebase,  -->
+and journals supplementary data, usually with different formats too.
+Second, lineage names due to taxonomic idiosincracy can be different among studies
+and manual curation of that is usually necessary.
+Third, data curation
+
+Platforms that contribute to knowledge in this areas:
+
+Supersmart is an open tool but not easy to use, still requires a lot of curation and knowledge.
+
+Phylogenerator [@pearse2013]
+
+Generate new dates using all available DNA sequence information;
+Perform one global analysis using all available information;
+
+Problems or downsides: This might be time consuming for large groups and a lot of
+data curation and knowledge on the group of interest is still necessary. For example,
+<!--General issues with dating techniques:--> choosing correct fossils for calibration
+requires a lot of expertise and knowledge on the group. An incorrect use of fossils
+can generate severe bias in dating results [@Sauquet2012c].
+<!--Data curation is necessary at some point (is this always true?)-->
+Hence, data curation is still an important part of any biological study. The research
+community considers it as an important or even crucial step before data analysis.
+Hence, automated processes for large data analysis are frequently received with skepticism.
+
+`datelife` palliates this by only using information available from already published
+studies, which are ideally constructed using robust information, such as sequence
+data and thoughtfully curated fossil calibrations.
+<!--Data curation is largely based on taxonomic knowledge; or at least on the interplay between taxonomy and phylogenetics-->
+<!--Importance of datelife:-->
+
+<!--INTRODUCTION: 5th paragraph: Goal, objectives and predictions-->
+Rapidly increasing data on time of lineage divergence both from molecular and paleontological studies; the increasing importance of use of these data in distant areas of research, often not specialized enough to rapidly obain data on their own; and the lack of an open (both the data sources and the code underlying the analyses) easy to use tool
+inspired the development of a prototype `datelife` service over a series
+of phylotastic hackathons [@Stoltzfus2013] at the National Evolutionary Synthesis Center.
+In this paper we present the first formal description of `datelife`, featuring an improved database of chronograms, more methods to summarize trees, and new functions to visualize data, as well as comparisons of summary trees.
+`datelife` is the main service for scaling phylogenetic trees in Phylotastic! system
+[@Stoltzfus2013] <!--to construct phylogenetic trees on the fly [http://phylotastic.org/].-->
+It can be used through its R package <link to documentation>, and a web interface
+(<http://www.datelife.org/query/>)<!-- and an API (still not up, tho)-->.
