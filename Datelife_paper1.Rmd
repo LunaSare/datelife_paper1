@@ -53,127 +53,33 @@ Corresponding authors: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
 
 **abstract.-** Here goes the abstract.
 
-**Keywords:** Tree; Phylogeny; Scaling; Open; Ages; Congruify; Supertree;
+**Keywords:** Tree; Phylogeny; Scaling; Dating; Ages; Divergence times; Open Science; Congruification; Supertree; Calibrations
 
 
 \newpage
-<!--INTRODUCTION: 1st paragraph: general statement that the field knows to be true and important-->
-Time of lineage divergence<!--alt lineages: named biological entities, taxon ages?-->
-constitutes in many ways a fundamental piece of information for evolutionary
-understanding.
-<!--Along with phylogenetic relationships, it is crucial for testing alternative
-evolutionary hypothesis in many areas of research,
-from developmental to ecological questions @Felsenstein1985a @Webb2008.
-It has been shown that even a little bit of information on a lineages time of origin is good to study ecological stuff @Webb2008
-comparative studies, in general, for which knowing
-the time context for all life is crucial.
-Along with migration rates and patterns, it is fundamental to test biogeographical
-hypothesis-->
-Coupled to species number and distribution, it allows studying the tempo and mode of speciation
-and extinction),
-<!-- crucial/vital/critical/essential --> central for understanding of how biodiversity
-patterns are shaped across space, time and clades [@Morlon2014].
-<!-- Efforts to have a whole tree of life have
-been great and here are some examples. -->
-<!--INTRODUCTION: 2nd paragraph: important advances in the field-->
-In the past two decades, the possibility to obtain good quality DNA sequences
-<!-- from a wide variety of organisms became a reality, which,  -->
-coupled to methodological developments in phylogenetic and dating inference, allowed
-the application of molecular dating methods on a very large amount and diversity
-of organisms, greatly increasing the quantity and quality of<!--organisms with--> data on taxon
-ages across the tree of life.
-<!-- figure showing growth on studies with age data from references table from ttol-->
-To date, there is a large amount of
-<!-- both fossil and molecular-based  -->
-data on taxon ages and phylogenetic relationships in public repositories such as Dryad, TreeBASE
-and Open Tree of Life (OToL).
-<!-- pbdb ??-->
-OToL alone hosts now more than 200 chronograms. <!--cache updated jan 15 2018
-devtools::load_all(pkg = "~/Desktop/datelife")
-length(opentree_chronograms$trees) names(opentree_chronograms)
--->
-<!--How many trees? How many dated trees?-->
-Methods to include living and fossil lineages are in continued development and increased
-usage by the community<!--total evidence and revbayes (fossilized birth-death)-->,
-which coupled to better sharing data practices, are greatly contributing to the
-accumulation in number and type of available data on taxon ages.
+Time of lineage divergence constitutes a fundamental piece of information for evolutionary
+understanding in many areas of research, from developmental to conservation biology [@Felsenstein1985a; @Webb2000], from historical biogeography to species diversification studies [@posadas2006historical; @Morlon2014]. The primary information needed for time of lineage divergence estimation comes from the fossil record. Coupled to molecular phylogenies, molecular dating methods are used to reconstruct the time of divergence of extant lineages. 
 
-<!--INTRODUCTION: 3rd paragraph: problems associated-->
-The TimeTree project [@Hedges2006; @Hedges2015; @Kumar2017] has aggregated chronograms
-from 3,163 studies, encompassing 97,085 species [@Kumar2017], and continues to grow.
-However, even in this gold standard resource, the included taxa only encompass between
-0.097 and 3.236% of total species diversity (following taxonomic expert opinion
-on the global, extant species numbers, which ranges from 3 to 100 million species
-[Mayr2010; Moran2011]). One advantage of TimeTree is that it includes taxa from
-across the tree of life, versus more specialized chronogram repositories focusing on plants
-[@webb2005phylomatic], birds [@Jetz2012], and fish . Users can choose
-between a web interface or a mobile app to receive information on divergence times
-for the evolutionary history of a lineage, pairs of taxa, all lineages within a
-taxon, or a list of taxa. As a science communication tool, TimeTree project is
-very powerful: it has a friendly graphical interface, with informative and colorful
-outputs, that allows the general public to satisfy curiosity regarding a particular
-organism of interest or group of them. It is of limited utility for scientific
-studies, however. The thousands of trees that have been entered are unavailable
-for examination or reuse; according to the creators (see TimeTree web FAQ), methods
-for allowing data downloading have been under discussion for the past several years
-yet the primary data remain closed. Moreover, there is no Application Programming
-Interface (API) allowing programmatic access to any data, greatly impairing the
-possibility of large-scale, automated data-mining, which is not allowed under TimeTree
-website's terms of use. The nearly hundred thousand taxon summary chronogram generated
-from TimeTree resources is not available with its publication [@Kumar2017] or the
-TimeTree website, though the still substantial chronogram from a previous publication
-[@Hedges2015] was made available at OToL.
-<!--What led to datelife development?
-Describe public and research necessities covered by datelife
-It is important to use available data on time frame of lineage origin:
-To know the state of dating for a group of interest:
-What range of estimated ages exist already? Are fossil and molecular
-time frames coherent? (e.g., [@Magallon2015c]).
-To construct a time tree of life.
-For science communication, improve scientific discussions, time-framing
-other events of importance in other research areas.
-Comparative method: autocorrelation (phylogenetic relatedeness) corrections, phylogenetic signal
--->
+Probably encouraged by the great developments in DNA sequencing techniques, phylogenetic inference and molecular dating methods, the number of studies publishing phylogenies with branch lengths proportional to geologic time (hereafter chronograms) have constantly increased in number for the last two decades [@Kumar2017].
+Still, generating a chronogram is not easy unless you have specialized training. That's why there has been an urge for reuse of the vast amount and still accuulating already available information for the advantage of researchers not specialized in this area.
 
-<!--INTRODUCTION: 4th paragraph-->
-Despite its great importance, analytical tools to summarize available information
-on taxon ages for the scientific community are still lacking.
-We identified several aspects that might have so far delayed the exploitation of
-existing data. First, original chronograms available publicly are scattered across repositories
-<!-- (otol tree store, dryad, treebase,  -->
-and journals supplementary data, usually with different formats too.
-Second, lineage names due to taxonomic idiosincracy can be different among studies
-and manual curation of that is usually necessary.
-Third, data curation
-Recent advances on this area (e.g., supersmart<!--and, which others?-->) aim to:
-Supersmart is an open tool but not easy to use, still requires a lot of curation and knowledge.
-Generate new dates using all available DNA sequence information;
-Perform one global analysis using all available information;
-Problems or downsides: This might be time consuming for large groups and a lot of
-data curation and knowledge on the group of interest is still necessary. For example,
-<!--General issues with dating techniques:--> choosing correct fossils for calibration
-requires a lot of expertise and knowledge on the group. An incorrect use of fossils
-can generate severe bias in dating results [@Sauquet2012c].
-<!--Data curation is necessary at some point (is this always true?)-->
-Hence, data curation is still an important part of any biological study. The research
-community considers it as an important or even crucial step before data analysis.
-Hence, automated processes for large data analysis are frequently received with skepticism.
+Wide interest from the scientific community to make chronogram information available for consultation and reuse has spurred the creation of public platforms with various goals. TreeBASE [@morell1996roots; @Piel2002], Phylomatic [@webb2005phylomatic], the Dryad repository (<http://datadryad.org/>), and the Open Tree of Life [OToL; @Hinchliff2015] platforms are dedicated to storing and making available published trees and chronograms for easy scientific reuse. For chronogram reuse for a wide range of living organisms, only OToL is generally suitable right now. Treebase does not store branch length information and dryad does not distinguish between data sets, so the time of lineage div information cannot be accessed. Phylomatic does contain chronograms but is restricted to plants and mammals, and if it tries to add more data it gives many polytomies back.
 
-`datelife` palliates this by only using information available from already published
-studies, which are ideally constructed using robust information, such as sequence
-data and thoughtfully curated fossil calibrations.
-<!--Data curation is largely based on taxonomic knowledge; or at least on the interplay between taxonomy and phylogenetics-->
-<!--Importance of datelife:-->
+OToL also has the primary goal of synthesizing stored trees into a single tree of life, to show phylogenetic relationships among known extant species and subspecies. All or parts of OToL's synthetic tree can be reused for any purpose; however, it currently does not include information on time of divergence, so the platform does not summarize source chronogram data. The Timetree of Life platform main goal is the synthesis of a single chronogram of life [@Hedges2006]. However, both the latest version of their synthetic chronogram [@Kumar2017] and the thousands of chronograms compiled for synthesis are only publicly available for visual examination in their website or for download as images, but not for scientific reuse or reanalysis.
 
-<!--INTRODUCTION: 5th paragraph: Goal, objectives and predictions-->
-Rapidly increasing data on time of lineage divergence both from molecular and paleontological studies; the increasing importance of use of these data in distant areas of research, often not specialized enough to rapidly obain data on their own; and the lack of an open (both the data sources and the code underlying the analyses) easy to use tool
-inspired the development of a prototype `datelife` service over a series
-of phylotastic hackathons [@Stoltzfus2013] at the National Evolutionary Synthesis Center.
-In this paper we present the first formal description of `datelife`, featuring an improved database of chronograms, more methods to summarize trees, and new functions to visualize data, as well as comparisons of summary trees.
-`datelife` is the main service for scaling phylogenetic trees in Phylotastic! system
-[@Stoltzfus2013] <!--to construct phylogenetic trees on the fly [http://phylotastic.org/].-->
-It can be used through its R package <link to documentation>, and a web interface
-(<http://www.datelife.org/query/>)<!-- and an API (still not up, tho)-->.
+Other platforms such as SuperSmart [@antonelli2017supersmart] and phylogenerator [@pearse2013phylogenerator] are focused in _de novo_ chronogram inference, by reusing DNA sequence data to reconstruct phylogenetic trees. However, expert fossil information necessary for subsequent molecular dating analyses still needs to be compiled and curated by the user, rendering them a challenging tool to obtain data on time of lineage divergence for the non-specialist. Moreover, they do not provide information from available chronograms.
+
+<!-- discussion:
+The Angiosperm Phylogeny Website [APW; @stevens2001apw] also specializes in constructing a single synthetic tree, but it focuses in showing phylogenetic relationships between seed plant families only, and it does not store or make available the source trees.
+
+Platforms dedicated to store data on fossils and fossil calibrations: PBDB and The fossil calibration database
+can provide data on time of lineage divergence, but it is often not in a phylogenetic context.
+
+To our knowledge, there is no system allowing the comparison of available source information (apw does this a little bit, but it is a verbal comparison more than a graphical or visual comparison). Other types of technical comparisons: which trees are better (which trees represent reality better), but this is of course a very difficult issue.
+ -->
+A platform for efficient reuse of expert, published data on time of lineage divergence should have an open source database in a format suitable for scientific reuse, and straightforward means of accessing, comparing and summarizing the source data as needed by the user.
+A prototype service striving for this characteristics was initially developed over a series of hackathons at the National Evolutionary Synthesis Center [@Stoltzfus2013].
+In here we present the first formal description of the `datelife` service. Constituted by and R package and web site, it features new methods to summarize chronograms, an improved system for chronogram database maintenance, new functions to visualize source data in the web interface (<http://www.datelife.org/query/>), as well as tools for comparison of source and summary trees. R packages for benchmarking of functionalities and exemplifying services were also developped.
 
 
 \begin{center}
@@ -190,29 +96,27 @@ The basic `datelife` workflow is shown in figure \ref{fig:workflow} and consists
 6) Finally, users can easily view results graphically as well as construct their own graphs using inbuilt `datelife` graphic generators.
 
 <!--To perform the former tasks:-->
-`datelife`'s chronogram database is currently built from Open Tree of Life (OToL)'s
-[@Hinchliff2015] tree repository. Among currently existing repositories (e.g., TreeBase,
+`datelife`'s chronogram database is currently built from OToL's
+tree repository. Among currently existing repositories (i.e., TreeBASE,
 Dryad), OToL's metadata rich tree store is the only one meeting the requirements
-for proper/accurate automatized handling of trees.
-Input taxon names accepted by `datelife` are binomial species names or clades.
+for automatized handling of source trees. TreeBASE trees are stored without branch lengths. Dryad metadata does not allow differentiating between different types of data sets, and trees would need to be manually curated anyways.
+`datelife` currently accepts scientific names, from named clades to binomial specifics.
 <!--common names (implemented yet?)-->
 Taxon searches are performed at the species level, so when input names correspond
-to higher clades,
-`datelife` pulls all accepted species names within the
+to named clades, `datelife` pulls all accepted species names within the
 clade from OToL's reference taxonomy to perform the search.
-Currently, searches at the infrapsecies level are not allowed, so input names belonging to subspecies or any other infraspecific category are treated
-as species.
-`datelife` also processes input names with the taxon name resolution service (TNRS),
+Currently, searches at the infraspecies level are not allowed, so input names belonging to subspecies or any other infraspecific category are collapsed to the species level.
+`datelife` also processes input names with the taxon name resolution service [TNRS; @Boyle2013],
 <!--which "corrects misspelled names and authorities, standardizes variant spellings,
 and converts nomenclatural synonyms to accepted names" (Boyle et al. 2013)-->
-which corrects potentially misspelled names and typos, and standardizes variation
-in spelling and synonyms <!--to a taxonomic reference of users choosing, default
-to otol taxonomy -->[@Boyle2013], increasing the probability to correctly find the
+which corrects potentially misspelled names and typos, and standardizes spelling
+variations and synonyms <!--to a taxonomic reference of users choosing, default
+to otol taxonomy -->, increasing the probability to correctly find the
 queried taxa in `datelife`'s chronogram database.
 
 Source chronogram summary tree can be assembled using the Super Distance Matrix
 (SDM) supertree construction approach [@Criscuolo2006] or using the median of branch
-lengths and the hierarchical clustering method<!-- of ttol-->. <!--Also, I discovered the median gives non ultrametric trees... but I think it is fixed now, check it!).-->
+lengths <!-- and the hierarchical clustering method of ttol-->.
 Tree dating and simulation options are performed with various algorithms:
 Branch Length Adjuster (BLADJ) is a simple algorithm to distribute ages of undated
 nodes evenly, which minimizes age variance in the chronogram [@Webb2008].
@@ -222,8 +126,8 @@ treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method
 MrBayes [@Huelsenbeck2001; @Ronquist2003] can be used when adding taxa at
 random, following a reference taxonomy or a topological constraint. It draws ages
 from a pure birth model, as implemented by Jetz and collaborators [-@Jetz2012].
-To apply calibrations to a tree, th econgruification algorithm described in [@Eastman2013]
-is used to find shared nodes between trees (congruent nodes).
+To apply calibrations to a tree, the congruification algorithm described by @Eastman2013
+is implemented to find shared nodes between trees (congruent nodes).
 
 To gather, process, and present information, `datelife` builds up from functions
 available in several R packages including rotl [@Michonneau2016], ape [@Paradis2004],
@@ -245,24 +149,17 @@ with one 3.4 GHz Intel Core i5 processor. <!--No multiprocessor tests were perfo
 We registered variation in computing time of query processing and search through the database relative to number of queried taxon names.
 Query processing increases roughly linearly with number of input taxon names, and
 increases considerably if TNRS service is activated. Up to ten thousand names can be processed and searched in less than 30 minutes. A name search through the chronogram database with an already processed query can be performed in less than a minute, even with a very large number of taxon names (Fig. \ref{fig:runtime1}).
-<!--
-Speed with different number of input lineages and types of analysis:
-Results show that searching time increases linearly with number of input names and
-number of chronograms in database.
-Summarizing `datelife` results processing times: sdm speed, clustering methods speed
-
-generating new trees: bladj speed
-Adding dates processing time: reflects more mrbayes speed than anything
-
-get_bold_otol_tree running time: not really useful since that is an external service
--->
-<!-- test improvement in synthetic tree after using bold sequences. Is it really better resolved?-->
-
-<!--Speed of web interface and of r package (in computers with different capacities?)-->
+<!--Speed of other datelife workflows? NO, bc it refkects speed from other software mainly. But I will put a sentence about it...
+Summarizing `datelife` results processing times: shows sdm speed, clustering methods speed;
+generating new trees: shows bladj speed;
+Adding dates processing time: reflects more mrbayes speed than anything;
+get_bold_otol_tree running time: reflects bold downloading data speed.-->
+<!--Speed with different number of chronograms in database? NO-->
+<!--Speed of web interface and of r package in computers with different capacities? NOOOO-->
 `datelife`'s code performance was evaluated with a set of unit tests designed and
-implemented with the R package testthat [@RCoreTeam2018]. These tests were run both
-locally –using the devtools package [@RCoreTeam2018]– and on a public server –via
-GitHub– using the continuous integration tool Travis CI (<https://travis-ci.org>). At
+implemented with the R package testthat [@RCoreTeam2018] that were run locally
+--using the devtools package [@RCoreTeam2018], and on a public server --via
+GitHub, using the continuous integration tool Travis CI (<https://travis-ci.org>). At
 present, unit tests cover more than 50% of `datelife`'s code (<https://codecov.io/gh/phylotastic/datelife>). <!-- unit test make code robust, verifiable, debuggable, -->
 
 
@@ -289,13 +186,16 @@ add taxa with different methods and Compare
 Use ltts to compare for now.
 
 think of a test to compare trees, topology- and date-wise
+
+test improvement in synthetic otol tree after using bold sequences. Is it really better resolved? Probably not.
+Do not include this analysis in paper, maybe in examples, but i think it is not worthy.
 -->
-In this section we demonstrate the types of outputs that can be obtained with `datelife`, using as an example the bird family Fringillidae of true finches. We performed a higher-taxon search to obtain all data on lineage divergence available from `datelife`'s database for all recognised species within the Fringillidae (`r length(dq$cleaned_names)` spp. according to the Open Tree of Life taxonomy). There are `r length(dr)` chronograms containing at least two Fringillidae species, published in `r length(unique(names(dr)))` different studies (Fig. \ref{fig:schronograms1}).
+In this section we demonstrate the types of outputs that can be obtained with `datelife`, using as an example the bird family Fringillidae of true finches. We performed a higher-taxon search to obtain all data on lineage divergence available in `datelife`'s database for all recognised species within the Fringillidae (`r length(dq$cleaned_names)` spp. according to the Open Tree of Life taxonomy). There are `r length(dr)` chronograms containing at least two Fringillidae species, published in `r length(unique(names(dr)))` different studies (Fig. \ref{fig:schronograms1}).
 <!-- In case we want to cite the studies in here, but they are already cited in the figure caption: [Fig. \ref{fig:schronograms1}; @barker2012going; @barker2015new; @burns2014phylogenetics; @claramunt2015new; @gibb2015new; @Hedges2015; @hooper2017chromosomal; @Jetz2012; @price2014niche]. -->
 Data from these source chronograms was used to generate two types of summary chronograms, median and SDM. As explained in the `Description`, data from source chronograms was first summarised into a single distance matrix (using either the median or the SDM method) and then the available node ages were used as calibrations points over a consensus tree topology, to obtain a dated tree with the program BLADJ (Fig. \ref{fig:summaries}). Median summary chronograms are older and have wider variation in maximum ages than chronograms obtained with SDM. In both cases, ages are coherent with source ages.
 <!-- (Going from a summary distance matrix Using this method is better than using clustering algorithms  -->
 <!-- and hierarchical clustering method which appears to push ages back -->
-It is not certain if these chronograms can be used to perform downstream evolutionary analyses. There is currently wide interest in determining this. However, it is certain that these chronograms are useful for...
+It is not certain if these chronograms can be used to perform downstream evolutionary analyses. There is currently wide interest in determining this. However, we know that these chronograms are useful for...
 
 Data from source chronograms was also used to date tree topologies with no branch length information and trees with branch lengths in relative substitution rates (Figs. \ref{fig:cvbladj} and \ref{fig:cvbold}). As a form of cross validation, we used tree topologies from each study and calibrated them using information from all other source chronograms. In the absence of branch length data, the ages of internal nodes were approximately recovered in almost all cases (except for studies 3, and 5; Fig. \ref{fig:cvbladj}). Maximum tree ages were only approximately recovered in one case (study 2; Fig. \ref{fig:cvbladj}).
 Branch lengths were successfully generated using the BOLD database for all source chronograms. However, dating with PATHd8 (using congruified calibrations) was only successful in
@@ -308,6 +208,14 @@ Paper should show outputs from web site and package.
 Vignette will show the R code used to generate the outputs displayed here and in the website.
 datelife examples will explain more on what is done in every step.
 -->
+
+\begin{center}
+\textsc{Deficiencies, Limitations and Prospects}
+\end{center}
+
+The main goal of `datelife` is to make expert information on time of lineage divergence easily accesible for comparison, reuse, and reanalysis, to researchers in all areas of science and with all levels of expertise in the matter.
+It depends 
+
 
 \begin{center}
 \textsc{Conclusions}
@@ -384,7 +292,7 @@ Dryad also?? since it is all in github already, maybe not necessary-->
 \textsc{Funding}
 \end{center}
 
-Funding was provided by NSF grant 1458603
+Funding was provided by US National Science Foundation (NSF) grant 1458603
 
 NESCent
 
@@ -397,7 +305,7 @@ University of Tennessee, Knoxville
 \textsc{Acknowledgements}
 \end{center}
 
-We thank colleagues (students and postdocs) at the O'Meara Lab at the University
+We thank colleagues from the O'Meara Lab at the University
 of Tennesse Knoxville for suggestions, discussions and software testing.
 The late National Evolutionary Synthesis Center (NESCent), which sponsored hackathons
 that led to initial work on this project.
@@ -405,7 +313,7 @@ The Open Tree of Life project that provides the open, metadata rich repository o
 trees used for `datelife`.
 The many scientists who publish their chronograms in an open, reusable form, and
 the scientists who curate them for deposition in OpenTree.
-The US National Science Foundation (NSF) for funding nearly all the above, in addition
+The NSF for funding nearly all the above, in addition
 to the ABI grant that funded this project itself.
 
 \newpage
