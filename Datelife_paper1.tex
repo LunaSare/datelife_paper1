@@ -119,16 +119,15 @@ remains difficult to synthesize for many biologists and the non-academic communi
 \newpage
 
 Time of lineage divergence constitutes a fundamental piece of information for evolutionary
-understanding in many areas of research, from developmental to conservation biology (Felsenstein \protect\hyperlink{ref-Felsenstein1985a}{1985}; Webb \protect\hyperlink{ref-Webb2000}{2000}), from historical biogeography to species diversification studies (Posadas et al. \protect\hyperlink{ref-posadas2006historical}{2006}; Morlon \protect\hyperlink{ref-Morlon2014}{2014}). The primary information needed for time of lineage divergence estimation comes from the fossil record. Coupled to molecular phylogenies, the time of divergence of extant lineages is reconstructed with molecular dating methods.
-
+understanding in many areas of research, from developmental to conservation biology (Felsenstein \protect\hyperlink{ref-Felsenstein1985a}{1985}; Webb \protect\hyperlink{ref-Webb2000}{2000}), from historical biogeography to species diversification studies (Posadas et al. \protect\hyperlink{ref-posadas2006historical}{2006}; Morlon \protect\hyperlink{ref-Morlon2014}{2014}). The primary information needed for time of lineage divergence estimation comes from the fossil record. Coupled to molecular phylogenies (and more recenyly to morphological data), the time of divergence of extant and extinct lineages can be reconstructed with molecular dating methods.
 Probably encouraged by the great developments in DNA sequencing techniques, phylogenetic inference and molecular dating methods, the number of studies publishing phylogenies with branch lengths proportional to geologic time (hereafter chronograms) have constantly increased in number for the last two decades (Kumar et al. \protect\hyperlink{ref-Kumar2017}{2017}).
-Still, generating a chronogram is not an easy task unless you have specialized training. That's why there has been an urge for promoting and facilitating reuse of the vast amount and still accumulating information that is already available, for the advantage of researchers not specialized in this area (Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005}; Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
+Still, generating a chronogram is not an easy task unless you have specialized training. That's why there has been an urge for promoting and facilitating reuse of the vast amount of phylogenetic and time of lineage divergence data that has been generated and made available in publications, for the advantage of research relying on this information (Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005}; Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
 
-Wide interest from the scientific community to make information from phylogenies in general and chronograms in particular available for consultation and reuse has spurred the creation of public platforms with various goals and characteristics. TreeBASE (Morell \protect\hyperlink{ref-morell1996roots}{1996}; Piel et al. \protect\hyperlink{ref-Piel2002}{2002}), the Dryad repository (\url{http://datadryad.org/}), and the Open Tree of Life (OToL; Hinchliff et al. \protect\hyperlink{ref-Hinchliff2015}{2015}) platforms are committed to storing and making available published phylogenies and chronograms for easy scientific reuse. All of them can be queried using automatised web procedures, which permit personalised, large scale queries that are also very fast.
-OToL's stores trees with branch lengths from a wide range of living organisms, using a very good metadata structure. Treebase and Dryad repositories also contain trees from all groups of life, but the former does not store branch length information and Dryad stores many other types of biological data, and their metadata does not allow automatic distinction between types of trees, impairing the automatised access to time of lineage divergence information.
+Wide interest from the scientific community to make information from phylogenies in general and chronograms in particular available for consultation and reuse has spurred the creation of public platforms with various goals and characteristics. TreeBASE (Morell \protect\hyperlink{ref-morell1996roots}{1996}; Piel et al. \protect\hyperlink{ref-Piel2002}{2002}), the Dryad repository (\url{http://datadryad.org/}), and the Open Tree of Life (OToL; Hinchliff et al. \protect\hyperlink{ref-Hinchliff2015}{2015}) platforms store and make available published phylogenies and chronograms for easy scientific reuse. All of them can be queried using automatised web procedures, which permit personalised, large scale queries that are also very fast.
+OToL stores trees with branch length information from a wide range of living organisms, implementing a very good metadata structure. Treebase and Dryad repositories also contain trees from all groups of life, but the former does not store branch length information and Dryad stores many other types of biological data, and their metadata does not allow automatic distinction between types of trees, impairing the automatised access to time of lineage divergence information from the latter two databases
 
-Besides storing public phylogenetic knowledge, OToL also has the primary goal of exposing a single tree of all life synthesised from trees in their repository, to show phylogenetic relationships of all known lineages.
-All or parts of OToL's synthetic tree can be reused for any purpose; however, it currently only focus on tree topology, meaning that it does not incorporate information on time of divergence from their stored chronograms.
+Besides keeping a repository to easily store and share expert phylogenetic and chronogram knowledge, OToL also has the primary goal of synthesised all trees in their repository to expose to the community the phylogenetic relationships among all known lineages in a single tree of all life.
+All or parts of this synthetic tree can be reused for any purpose; however, it currently only shows tree topology, meaning that it does not expose branch length data of any type, including time of divergence data from their stored chronograms.
 Phylomatic (Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005})
 is a platform that synthesizes a tree containing taxa of interest from a user supplied set of trees or from its own database.
 It has the advantage that it allows grafting taxa of interest absent from their database, but it is limited to mostly seed plants and mammals. If your query does not match its records, it gives many polytomies back.
@@ -136,9 +135,10 @@ The Timetree of Life project focuses on the synthesis of a single chronogram of 
 
 Other platforms such as SuperSmart (Antonelli et al. \protect\hyperlink{ref-antonelli2017supersmart}{2017}) and phylogenerator (Pearse and Purvis \protect\hyperlink{ref-pearse2013phylogenerator}{2013}) are focused in automatised \emph{de novo} chronogram inference, by reusing DNA sequence data to reconstruct phylogenetic trees. However, expert fossil information necessary for subsequent molecular dating analyses still needs to be compiled and curated by the user, rendering them a challenging tool to obtain data on time of lineage divergence for the non-specialist. Also, these tools do not provide information from already existent expert chronograms.
 
-A tool for efficient reuse of expert, published data on time of lineage divergence should have an open source database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing the source data as needed by the user.
-A prototype service aiming to meet this characteristics was initially developed over a series of hackathons at the National Evolutionary Synthesis Center (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
-In here we present the first formal description and implementation of the \texttt{datelife} service, constituted by and R package and a web site (\url{http://www.datelife.org/}). There is still much room for improvement, and flaws and limitations are addressed below. We strived for the current implementation of \texttt{datelife} to perform the basic tasks described above, featuring a system for maintenance of an open database of chronograms pulled from public repositories, methods to summarize and compare source chronograms, new functions to visualize and graphically compare source and summary chronograms, as well as tools for comparison of source and summary trees. R packages for benchmarking of functionalities and exemplifying services were also developped.
+A tool for efficient reuse of expert, published data on time of lineage divergence should have an open source database storing chronograms in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram data as needed by the user.
+A prototype service aiming to meet this characteristics was developed over a series of hackathons at the National Evolutionary Synthesis Center (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
+In here we present the formal description and implementation of the \texttt{datelife} service, constituted by an R package and a web site (\url{http://www.datelife.org/}). There is still much room for improvement, and flaws and limitations are addressed below. We strived for the current implementation of \texttt{datelife} to perform the basic tasks described above, featuring a system for maintenance of an open database of chronograms pulled from public repositories, methods to summarize and compare source chronograms, and new functions to visualize and graphically compare source and summary chronograms.
+R packages for benchmarking of functionalities and demonstrating services were also developped.
 
 \begin{center}
 \textsc{Description}
@@ -163,10 +163,14 @@ The basic \texttt{datelife} workflow is shown in figure \ref{fig:workflow} and c
   Finally, users can easily view results graphically as well as construct their own graphs using inbuilt \texttt{datelife} graphic generators.
 \end{enumerate}
 
-\texttt{datelife}'s chronogram database is currently built from OToL's
-tree repository. Among currently existing repositories (i.e., TreeBASE,
-Dryad), OToL's metadata rich tree store is the only one meeting the requirements
-for automatized handling of source trees. TreeBASE trees are stored without branch lengths. Dryad metadata does not allow differentiating between different types of data sets, and trees would need to be manually curated anyways.
+To gather, process, and present information, \texttt{datelife} builds up from functions
+available in several R packages including rotl (Michonneau et al. \protect\hyperlink{ref-Michonneau2016}{2016}), ape (Paradis et al. \protect\hyperlink{ref-Paradis2004}{2004}),
+geiger (Harmon et al. \protect\hyperlink{ref-Harmon2008}{2008}), paleotree (Bapst \protect\hyperlink{ref-Bapst2012a}{2012}), bold (Chamberlain \protect\hyperlink{ref-Chamberlain2018}{2018}), phytools (Revell \protect\hyperlink{ref-Revell2012}{2012}), taxize (Chamberlain and Szöcs \protect\hyperlink{ref-Chamberlain2013}{2013}; Chamberlain \protect\hyperlink{ref-Chamberlain2018}{2018}), phyloch (Heibl \protect\hyperlink{ref-Heibl2008}{2008}), phylocomr (Ooms and Chamberlain \protect\hyperlink{ref-Ooms2018}{2018}) and rphylotastic (O'Meara et al. \protect\hyperlink{ref-Omeara2019}{2019}).
+
+\texttt{datelife}'s chronogram database currently contains only chronograms from OToL's
+tree repository. Compared to other existing tree repositories, such as TreeBASE and
+Dryad, OToL's metadata rich tree store is the only one that supports automatised proper search, identification and handling of chronograms. The TreeBASE repository stores trees without branch lengths, so chronograms stored there do not provide relevant information on time of lineage divergence. The Dryad repository not only stores trees and chronograms, but all sorts of biological data, and their metadata does not allow differentiating between trees with branch lengths proportional to time and any other branch length measure that is not relevant to summarize time of divergence.
+
 \texttt{datelife} currently accepts scientific names only. It can be any named clade or binomial specific.
 Chronogram searches are performed at the species level, so when input names correspond
 to named clades, \texttt{datelife} pulls all accepted species names within the
@@ -177,7 +181,7 @@ which corrects potentially misspelled names and typos, and standardizes spelling
 variations and synonyms , increasing the probability to correctly find the
 queried taxa in \texttt{datelife}'s chronogram database.
 
-Source chronogram summary tree can be assembled using the Super Distance Matrix
+Source chronogram summary trees can be assembled using the Super Distance Matrix
 (SDM) supertree construction approach (Criscuolo et al. \protect\hyperlink{ref-Criscuolo2006}{2006}) or using the median of branch
 lengths .
 Tree dating and simulation options are performed with various algorithms:
@@ -191,12 +195,6 @@ random, following a reference taxonomy or a topological constraint. It draws age
 from a pure birth model, as implemented by Jetz and collaborators (\protect\hyperlink{ref-Jetz2012}{2012}).
 To apply calibrations to a tree, the congruification algorithm described by Eastman et al. (\protect\hyperlink{ref-Eastman2013}{2013})
 is implemented to find shared nodes between trees (congruent nodes).
-
-To gather, process, and present information, \texttt{datelife} builds up from functions
-available in several R packages including rotl (Michonneau et al. \protect\hyperlink{ref-Michonneau2016}{2016}), ape (Paradis et al. \protect\hyperlink{ref-Paradis2004}{2004}),
-geiger (Harmon et al. \protect\hyperlink{ref-Harmon2008}{2008}), paleotree (Bapst \protect\hyperlink{ref-Bapst2012a}{2012}), bold (Chamberlain \protect\hyperlink{ref-Chamberlain2018}{2018}), phytools (Revell \protect\hyperlink{ref-Revell2012}{2012}),
-taxize (Chamberlain and Szöcs \protect\hyperlink{ref-Chamberlain2013}{2013}; Chamberlain \protect\hyperlink{ref-Chamberlain2018}{2018}), phyloch (Heibl \protect\hyperlink{ref-Heibl2008}{2008}), phylocomr (Ooms and Chamberlain \protect\hyperlink{ref-Ooms2018}{2018})
-and rphylotastic (O'Meara et al. \protect\hyperlink{ref-Omeara2019}{2019}).
 
 \begin{center}
 \textsc{Benchmark}
@@ -232,26 +230,27 @@ More examples and details can be consulted in \url{https://github.com/LunaSare/d
 
 The main goal of \texttt{datelife} is to make expert information on time of lineage divergence easily accesible for comparison, reuse, and reanalysis, to researchers in all areas of science and with all levels of expertise in the matter. It is a very fast tool that fulfills the quality of openness and does not require any expert biological knowledge from users --besides the names of the organisms they want to work with-- for any of its functionalities. However, it has many flaws. Some of them can be overcome, some of them might represent limitations.
 
-There is only one public repository that has the metadata that datelife needs to perform its tasks and services.
-Other databases are not suitable for data mining because of their metadata structure.
-OToL's tree database is very large for phylogenetic trees, but only stores a little bit more than 200 chronograms. This database is maintained by the scientific community, so the prospect is to keep inviting and doing work encouraging scientists to make their data sets available in this database.
+There is only one public tree repository from where \texttt{datelife} currently pulls chronograms to construct its database. Other existing tree repositories are not suitable for time of divergence data mining because they either do not store that data or because their metadata does not have enough information to allow automatised chronogram searches. \texttt{datelife}'s database has a bit more than 200 chronograms up to the time the manuscript was written.
+Incorporation of the many chronograms that are available in data repositories such as Dryad and also from supplementary material of journals to \texttt{datelife}'s database is crucial to improve \texttt{datelife}'s services.
+Methods to automatically mine Dryad repository for chronogram data could be designed and implemented.
+At the same time, we would like to increase awereness and emphasize on the importance of data sharing in databases that are maintained by the expert scientific community, requiring expert input and manual curation, such as OToL's tree store.
 
 We introduce different ways of summarizing this data, but are these summary chronograms reliable to study evolutionary patterns? The short answer is that we do not know to what extent the summary trees can be used for reanalyses and in which areas they can be used more reliably than others. Surely they might be useful for ecological analyses, but further studies should be conducted.
 
-As implemented now, we currently by default summarize all source data avilable. Users can subset source data if they have reasons to favor some or one source chronogram over others. To our knowledge there is no objective way to determine if an expert chronogram is better than other. Some criteria that have been put forward are the level of sampling and the numer of calibrations used. Scientists usually also favor chronograms coming from studies with primary calibrations to ones from secondary calibrations.
-It would be important to evaluate how different source chronograms affect summary chronograms, in order to determine if any type of bias is introduced by certain types of chronograms in particular, so this chronograms are not included in the summary.
-A first step in that direction would be to add data on chronograms that come from primary or secondary calibrations, and maybe the number of calibrations used. This will need to be manually curated.
+As implemented now, we currently by default summarize all source data avilable. Users can subset source data if they have reasons to favor some or one source chronogram over others. Strictly speaking, a good chronogram reflects the real time of divergence accurately and precisely. To our knowledge there is no objective way to determine if an expert chronogram is better than other. Some criteria that have been put forward are the level of sampling and the numer of calibrations used. Scientists usually also favor chronograms coming from studies with primary calibrations to ones from secondary calibrations. \texttt{datelife}'s database includes all chronograms derived from expert knowledge, and this includes those derived from secondary calibrations. It has been shown with simulations that in analyses performed with bayesian inference methods, divergence times inferred with secondary calibrations are significantly younger than those inferred with primary calibrations (using secondary calibrations in the same way as primary calibrations are used Schenk \protect\hyperlink{ref-schenk2016sec}{2016}\protect\hyperlink{ref-schenk2016sec}{a}). But there are different ways to apply secondary calibrations and the bias might not be encountered with other dating methods that do not require prior assumptions (such as ML methods). This information should be included as metadata to facilitate subset of source chronograms. This will need to be manually curated as is done in OToL.
 
-Even if all source chronograms have been generated by excellent standards and practices, the evolutionary context they depict might be very different.
-The ideal would be to use dates that were obtained from the same DNA context, which should reflect a more homogeneous evolutionary history or hypothesis (Antonelli et al. \protect\hyperlink{ref-antonelli2017supersmart}{2017}). Summarizing trees implies summarizing evolutionary hypothesis.
+As observed from the comparison of source chronograms in the example above, even chronograms obtained with primary data can be very different. There is some evidence that different chronograms will result in very different macroevolutionary histories inferred from them (Title and Rabosky \protect\hyperlink{ref-title2016macrophylogenies}{2016}). In other areas of research, such as ecological and conservation biology, it has been demonstrated that the presence of data on lineage divergence represents an improvement for testing alternative hypothesis, compared to testing in a total absence of such time data. However, we do not know how using wrong or different kinds of age data will affect the outcomes of ecological tests. More work has to be performed in this area.
+A large discrepancy in time of lineage divergence across expert knowledge is well known for different groups of organisms (e.g., angiosperms; Magallón et al. \protect\hyperlink{ref-magallon2015metacalibrated}{2015}). Comparison of available chronogram data for a wide range of organisms shown in the examples here suggest that this is a widespread phenomenon that requires further attention.
+In the case of the example presented here, most chronograms are new, meaning that we expect that data was generated with high quality and the software used should be very advanced. However, this is just an assumption. Scores on source data used (quality of alignement: missing data, GC content; tip sampling strategy; phylogenetic inference method; dating inference method; numer of fossils used). But we should also be able to choose on
 
-However, the comparison of source trees in the example above shows that even chronograms obtained with primary data can be very different. There is some evidence that different chronograms will result in very different macroevolutionary histories inferred from them (Title and Rabosky \protect\hyperlink{ref-title2016macrophylogenies}{2016}). In other areas of research, such as ecological and conservation biology, it has been demonstrated that the presence of data on lineage divergence represents an improvement for testing alternative hypothesis, compared to testing in a total absence of such time data. However, we do not know how using wrong or different kinds of age data will affect the outcomes of ecological tests. More work has to be performed in this area.
-The comparison of available data has made evident how much discrepancy in time of lineage divergence can be found across expert knowledge. This has been shown for angiosperms previously (Magallón et al. \protect\hyperlink{ref-magallon2015metacalibrated}{2015}), but our examples show that this is a widespread phenomenon that might require further attention.
-In the case of the example presented here, most chronograms are new, meaning that we expect that data was generated with high quality and software used was very advanced. However, this is just an assumption. Scores on source data used (quality of alignement: missing data, GC content; tip sampling strategy; phylogenetic inference method; dating inference method; numer of fossils used) But we should also be able to choose on
+Even if all source chronograms have been generated by excellent standards and using same practices, the evolutionary context they depict might be very different.
+The ideal would be to use dates that were obtained from the same DNA context, which should reflect a more homogeneous evolutionary history or hypothesis (Antonelli et al. \protect\hyperlink{ref-antonelli2017supersmart}{2017}). Summarizing trees implies summarizing evolutionary hypothesis. It is unsure if this is a good or bad thing.
+
+For all these reasons, the ideal would be to use fossil data as primary sources of calibrations. This will be an upscale for datelife, taking fossils already cutrated as calibrations to date other trees.
 
 Improvements:
 * fossils as calibrations: Using secondary calibrations can generate biased ages when using bayesian methods, mainly because we don't know what prior to give to secondary calibrations
-(Schenk \protect\hyperlink{ref-Schenk2016}{2016}).
+(Schenk \protect\hyperlink{ref-Schenk2016}{2016}\protect\hyperlink{ref-Schenk2016}{b}).
 * bayesian congruification
 * topological congruification
 
@@ -441,8 +440,11 @@ Revell L.J. 2012. Phytools: An r package for phylogenetic comparative biology (a
 \leavevmode\hypertarget{ref-Ronquist2003}{}%
 Ronquist F., Huelsenbeck J.P. 2003. MrBayes 3: Bayesian phylogenetic inference under mixed models. Bioinformatics. 19:1572--1574.
 
+\leavevmode\hypertarget{ref-schenk2016sec}{}%
+Schenk J.J. 2016a. Consequences of secondary calibrations on divergence time estimates. PLoS ONE. 11.
+
 \leavevmode\hypertarget{ref-Schenk2016}{}%
-Schenk J.J. 2016. Consequences of secondary calibrations on divergence time estimates. PLoS ONE. 11.
+Schenk J.J. 2016b. Consequences of secondary calibrations on divergence time estimates. PLoS ONE. 11.
 
 \leavevmode\hypertarget{ref-Smith2012}{}%
 Smith S.A., O'Meara B.C. 2012. TreePL: Divergence time estimation using penalized likelihood for large phylogenies. Bioinformatics. 28:2689--2690.

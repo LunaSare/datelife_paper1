@@ -16,6 +16,13 @@ nocite: |
   @barker2012going, @barker2015new, @burns2014phylogenetics, @claramunt2015new, @gibb2015new, @Hedges2015, @hooper2017chromosomal, @Jetz2012, @price2014niche
 ---
   
+Phylomatic [@webb2005phylomatic]
+<!-- In a way, phylomatic synthesises trees based on a query. -->
+is a platform that synthesizes a tree containing taxa of interest from a user supplied set of trees or from its own database.
+It has the advantage that it allows grafting taxa of interest absent from their database, but it is limited to mostly seed plants and mammals. If your query does not match its records, it gives many polytomies back.
+
+treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method
+[@Smith2012].
 <!--INTRODUCTION: 1st paragraph: general statement that the field knows to be true and important-->
 Time of lineage divergence <!--alt lineages: named biological entities, taxon ages?-->
 constitutes a fundamental piece of information for evolutionary
