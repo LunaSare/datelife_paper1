@@ -131,7 +131,7 @@ All or parts of this synthetic tree can be reused for any purpose. However, it c
 The Timetree of Life project focuses on the synthesis of a single chronogram of life (Hedges et al. \protect\hyperlink{ref-Hedges2006}{2006}). However, the thousands of chronograms they have compiled for synthesis are only publicly available for visual examination in their website or for download as images, but not for scientific reuse or reanalysis. The latest version of their synthetic chronogram (Kumar et al. \protect\hyperlink{ref-Kumar2017}{2017}) can be queried only through their website in a non-automatised fashion, and only subsets of it can be reused for analyses with the permission of the authors.
 Other platforms such as SuperSmart (Antonelli et al. \protect\hyperlink{ref-antonelli2017supersmart}{2017}) and phylogenerator (Pearse and Purvis \protect\hyperlink{ref-pearse2013phylogenerator}{2013}) are focused in automatised \emph{de novo} chronogram inference, by reusing DNA sequence data to reconstruct phylogenetic trees. However, expert fossil information necessary for subsequent molecular dating analyses still needs to be compiled and curated by the user, rendering them a challenging tool to obtain data on time of lineage divergence for the non-specialist. Moreover, these tools do not provide information from already existent expert chronograms.
 
-A tool for efficient reuse of expert, published data on time of lineage divergence should have an open source chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
+A tool for efficient reuse of expert, published data on time of lineage divergence should have an open and fuly public chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
 A prototype service aiming to meet this characteristics was developed over a series of hackathons at the National Evolutionary Synthesis Center (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
 In here we present the formal description and implementation of the \texttt{datelife} service, constituted by an R package and a web site (\url{http://www.datelife.org/}). There is still much room for improvement, and flaws and limitations are addressed below. We strived for the current implementation of \texttt{datelife} to perform the basic tasks described above, featuring a system for maintenance of an open database of chronograms pulled from public repositories, methods to summarize and compare source chronograms, and new functions to visualize and graphically compare source and summary chronograms.
 R packages for benchmarking of functionalities and demonstrating services were also developed and made available.
@@ -146,7 +146,7 @@ The basic \texttt{datelife} workflow is shown in figure \ref{fig:workflow} and c
 \item A user providing at least two taxon names as input, either as tip labels on a tree, or as a simple comma separated character string. The tree can be in newick or phylo format, and can be with or without branch lengths.
 \item A name search is then performed across the chronogram database; source trees with at least two matching input names are identified; all other taxa that do not match the original query are then dropped from the positively identified source trees --these pruned chronograms are hereafter referred as source chronograms; finally, each source chronogram is transformed to a patristic matrix named by the citation of the original study. This format facilitates and greatly speeds up all further analyses and summarising algorithms.
 \item  The user can obtain different summary information from the source chronograms including: a) all source chronogram ages, b) maximum ages of source chronograms, c) citations of studies where source chronograms were originally published, d) a summary table with all of the above, e) a single summary tree of all or a subset of source chronograms, and f) a report of succesful matches of input taxon names across source chronograms. Summary information can be used to make decisions on the next steps of the workflow. 
-\item  Source chronogram data can be used as calibration points to date a tree with or without branch lengths containing some or all names from the initial query. <!--, a taxonomic tree-->
+\item  Source chronogram data can be used as calibration points to date a tree with or without branch lengths containing some or all names from the initial query. %<!--, a taxonomic tree-->
 \item  If there is no information available for any queried taxa, users can also simulate both age and phylogenetic data for this missing taxa with a variety of algorithms described below.
 \item  Finally, users can easily view and compare results graphically, as well as construct their own graphs using inbuilt `datelife` graphic generation functions.
 \end{enumerate}
@@ -169,17 +169,10 @@ The chronogram search is performed across \texttt{datelife}'s chronogram databas
 
 Information from source chronograms can be summarised using the Super Distance Matrix (SDM) approach for supertree reconstruction (Criscuolo et al. \protect\hyperlink{ref-Criscuolo2006}{2006}) or using a summary statistic of branch
 lengths (such as median or mean).
-Tree dating and simulations are performed with various algorithms:
-Branch Length Adjuster (BLADJ) is a simple algorithm to distribute ages of undated
-nodes evenly, which minimizes age variance in the chronogram (Webb et al. \protect\hyperlink{ref-Webb2008}{2008}).
-PATHd8 is a non-clock, rate-smoothing method (Britton et al. \protect\hyperlink{ref-Britton2007}{2007}) to date trees that requires initial branch lengths and a set of calibrations.
+The resulting summary patristic distance matrix could be clustered with classic algorithms. However, we noticed that the resulting trees are often non-ultrameric and do not reflect the source chronogram data. Instead, we obtained a distribution of age data from the summary matrix available for nodes on a consensus tree. The Branch Length Adjuster (BLADJ) algorithm (Webb et al. \protect\hyperlink{ref-Webb2008}{2008}) was then used to distribute node ages evenly over the consensus tree, minimizing age variance in the resulting chronogram.
 
-MrBayes (Huelsenbeck and Ronquist \protect\hyperlink{ref-Huelsenbeck2001}{2001}; Ronquist and Huelsenbeck \protect\hyperlink{ref-Ronquist2003}{2003}) can be used when adding taxa at
-random, following a reference taxonomy or a topological constraint. It draws ages
-from a pure birth model, as implemented by Jetz and collaborators (\protect\hyperlink{ref-Jetz2012}{2012}).
-
-To apply calibrations to a tree, the congruification algorithm described by Eastman et al. (\protect\hyperlink{ref-Eastman2013}{2013})
-is implemented to find shared nodes between trees (congruent nodes).
+For tree dating, the congruification algorithm described by Eastman et al. (\protect\hyperlink{ref-Eastman2013}{2013})
+is implemented to find shared nodes between trees (congruent nodes). The ages of these nodes are then used as calibrations to date any given tree. Currently implemented methods for tree dating are BLADJ, MrBayes (Huelsenbeck and Ronquist \protect\hyperlink{ref-Huelsenbeck2001}{2001}; Ronquist and Huelsenbeck \protect\hyperlink{ref-Ronquist2003}{2003}) and PATHd8 (Britton et al. \protect\hyperlink{ref-Britton2007}{2007}), a non-clock, rate-smoothing dating method.
 
 \begin{center}
 \textsc{Benchmark}
@@ -218,9 +211,9 @@ The main goal of \texttt{datelife} is to make expert information on time of line
 At the moment, \texttt{datelife}'s chronogram database is not very large. It stores 231 chronograms up to the time the manuscript was written. This represents 5.79\% of the largest existing chronogram database, which is unfortunately not open for scientific reuse and automatised data mining (Kumar et al. \protect\hyperlink{ref-Kumar2017}{2017}). OToL is the only public tree repository from where \texttt{datelife} can currently pull chronograms to construct its database. Other open repositories are not suitable for time of divergence data mining because they either do not store that data (i.e., TreeBASE), or their metadata does not have enough information to allow automatised chronogram searches (i.e., Dryad).
 
 A previous version of TimeTree's synthetic chronogram (Hedges et al. \protect\hyperlink{ref-Hedges2015}{2015}) was made available in OToL repository, hence the amount of lineages represented in datelife's database is at least as substantial as TimeTree's.
-This ensures that at least some information will be available for any given query, but it does not ensure that the full state of knowledge of time of divergence data will be available for any gien lineage.
+This ensures that at least some information will be available for any given query, but it does not ensure that the full state of knowledge of time of divergence data will be available for any given lineage.
 
-Thus, incorporation of the many chronograms that are available in data repositories such as Dryad and also from supplementary material of journals to \texttt{datelife}'s database is crucial to improve \texttt{datelife}'s services.
+Thus, incorporation of published chronograms available in the Dryad data repository and in supplementary material of journals to \texttt{datelife}'s database is crucial to improve its services.
 Methods to automatically mine chronogram data from the Dryad repository could be designed and implemented. However, the unit of branch lengths would need to be determined by ``hand''.
 Consequently, we would like to emphasize on the importance for the scientific community of sharing chronogram data in repositories that require expert input and manual curation,~such as OToL's tree repository.
 
@@ -271,7 +264,7 @@ it allows rapid synthesis in a number of different formats;
 
 \texttt{datelife} is free and open source and it can be used through its current website
 \url{http://www.datelife.org/query/}, through its R package, and through Phylotastic's project web portal \url{http://phylo.cs.nmsu.edu:3000/}.
-\texttt{datelife}'s website is maintained with RStudio's shiny server and the shiny package open infrastructure, as well as Docker.
+\texttt{datelife}'s website is maintained using RStudio's shiny server and the shiny package open infrastructure, as well as Docker.
 \texttt{datelife}'s R package stable version is available
 for installation from the CRAN repository (\url{https://cran.r-project.org/package=datelife})
 using the command \texttt{install.packages(pkgs\ =\ "datelife")} from within R. Development versions
@@ -288,7 +281,7 @@ Code used to generate all versions of this manuscript, the biological examples, 
 \textsc{Funding}
 \end{center}
 
-Funding was provided by US National Science Foundation (NSF) grant 1458603
+Funding was provided by the US National Science Foundation (NSF) grant 1458603
 
 NESCent
 
@@ -307,7 +300,7 @@ that led to initial work on this project.
 The Open Tree of Life project that provides the open, metadata rich repository of
 trees used for \texttt{datelife}.
 The many scientists who publish their chronograms in an open, reusable form, and
-the scientists who curate them for deposition in OpenTree.
+the scientists who curate them for deposition in the Open Tree of Life repository.
 The NSF for funding nearly all the above, in addition
 to the ABI grant that funded this project itself.
 
@@ -530,6 +523,9 @@ LTT plots showing results from the cross-validation analyses of trees with branc
 \caption{}
 \label{fig:cvbold}
 \end{figure}
+
+
+Supplementary Material
 
 
 \end{document}

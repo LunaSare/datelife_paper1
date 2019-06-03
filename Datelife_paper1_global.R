@@ -20,6 +20,8 @@ download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/do
               destfile = "fig_crossval_bladj.pdf", mode="wb")
 download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_lttplot_crossval_pathd8_summ1.pdf",
               destfile = "fig_crossval_boldsumm.pdf", mode="wb")
+download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/docs/plots/Fringillidae_LTTplot_clusters_both.pdf",
+              destfile = "fig_lttplot_clusters.pdf", mode="wb")
 
 
 source("frin_plan.R")

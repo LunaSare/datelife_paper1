@@ -129,19 +129,17 @@ The chronogram search is performed across `datelife`'s chronogram database which
 <!-- The TreeBASE repository stores trees without branch lengths, so chronograms stored there do not provide relevant information on time of lineage divergence. The Dryad repository stores all types of biological data besides chronograms, and their metadata does not allow differentiating between branch lengths units.  -->
 <!-- branch length units that might represent other types of time of divergence that are not proportional to absolute (geologic) time.  -->
 
-Information from source chronograms can be summarised using the Super Distance Matrix (SDM) approach for supertree reconstruction [@Criscuolo2006] or using a summary statistic of branch
-lengths (such as median or mean). The resulting summary distance matrix could be clustered using  <!-- and the hierarchical clustering method of ttol-->
-Tree dating and simulations are performed with various algorithms:
-Branch Length Adjuster (BLADJ) is a simple algorithm to distribute ages of undated
-nodes evenly, which minimizes age variance in the chronogram [@Webb2008].
-PATHd8 is a non-clock, rate-smoothing method [@Britton2007] to date trees that requires initial branch lengths and a set of calibrations.
+Information from source chronograms can be summarised with a summary statistic of tree branch
+lengths (such as median or mean) or using the Super Distance Matrix (SDM) approach for supertree reconstruction [@Criscuolo2006]. <!-- and the hierarchical clustering method of ttol-->
+The resulting summary patristic distance matrix could be clustered with classic algorithms. However, we noticed that the resulting trees are often non-ultrameric and do not reflect the source chronogram data (see datelife_examples package). Instead, we obtained a distribution of age data from the summary matrix available for nodes on a consensus tree. The Branch Length Adjuster (BLADJ) algorithm [@Webb2008] was then used to distribute node ages evenly over the consensus tree, minimizing age variance in the resulting chronogram.
 
-MrBayes [@Huelsenbeck2001; @Ronquist2003] can be used when adding taxa at
-random, following a reference taxonomy or a topological constraint. It draws ages
-from a pure birth model, as implemented by Jetz and collaborators [-@Jetz2012].
+For tree dating, the congruification algorithm described by @Eastman2013
+is implemented to find shared nodes between trees (congruent nodes). The ages of these nodes are then used as calibrations to date any given tree. Currently implemented methods for tree dating are BLADJ, MrBayes [@Huelsenbeck2001; @Ronquist2003] and PATHd8 [@Britton2007], a non-clock, rate-smoothing dating method.
 
-To apply calibrations to a tree, the congruification algorithm described by @Eastman2013
-is implemented to find shared nodes between trees (congruent nodes).
+<!-- and simulations are performed with various algorithms: -->
+<!-- MrBayes can be used when adding taxa at -->
+<!-- random, following a reference taxonomy or a topological constraint. It draws ages -->
+<!-- from a pure birth model, as implemented by Jetz and collaborators [-@Jetz2012]. -->
 
 
 <!-- Details on each step are further developed in `datelife`'s R package documentation -->
@@ -204,7 +202,7 @@ In this section we demonstrate the types of outputs that can be obtained with `d
 Data from these source chronograms was used to generate two types of summary chronograms, median and SDM. As explained in the `Description`, data from source chronograms was first summarised into a single distance matrix (using either the median or the SDM method) and then the available node ages were used as calibrations points over a consensus tree topology, to obtain a dated tree with the program BLADJ (Fig. \ref{fig:summaries}). Median summary chronograms are older and have wider variation in maximum ages than chronograms obtained with SDM. In both cases, ages are coherent with source ages.
 <!-- (Going from a summary distance matrix Using this method is better than using clustering algorithms  -->
 <!-- and hierarchical clustering method which appears to push ages back -->
-It is not certain if these chronograms can be used to perform downstream evolutionary analyses. There is currently wide interest in determining this. However, we know that these chronograms are useful for...
+It is not certain if these chronograms can be used to perform all types of downstream evolutionary analyses and more research is needed in that direction.
 
 Data from source chronograms was also used to date tree topologies with no branch length information and trees with branch lengths in relative substitution rates (Figs. \ref{fig:cvbladj} and \ref{fig:cvbold}). As a form of cross validation, we used tree topologies from each study and calibrated them using information from all other source chronograms. In the absence of branch length data, the ages of internal nodes were approximately recovered in almost all cases (except for studies 3, and 5; Fig. \ref{fig:cvbladj}). Maximum tree ages were only approximately recovered in one case (study 2; Fig. \ref{fig:cvbladj}).
 Branch lengths were successfully generated using the BOLD database for all source chronograms. However, dating with PATHd8 (using congruified calibrations) was only successful in
@@ -224,7 +222,7 @@ datelife examples will explain more on what is done in every step.
 
 The main goal of `datelife` is to make expert information on time of lineage divergence easily accesible for comparison, reuse, and reanalysis, to researchers in all areas of science and with all levels of expertise in the matter. It is a very fast tool that fulfills the quality of openness and does not require any expert biological knowledge from users --besides the names of the organisms they want to work with-- for any of its functionalities. However, it has many flaws. Some of them can be overcome, some of them might represent limitations.
 
-At the moment, `datelife`'s chronogram database is not very large. It stores `r length(opentree_chronograms$trees)` chronograms up to the time the manuscript was written. This represents `r round(length(opentree_chronograms$trees)*100/3987, digits = 2)`% of the largest existing chronogram database, which is unfortunately not open for scientific reuse and automatised data mining [@Kumar2017]. OToL is the only public tree repository from where `datelife` can currently pull chronograms to construct its database. Other open repositories are not suitable for time of divergence data mining because they either do not store that data (i.e., TreeBASE), or their metadata does not have enough information to allow automatised chronogram searches (i.e., Dryad). 
+At the moment, `datelife`'s chronogram database is not very large, storing `r length(opentree_chronograms$trees)` chronograms up to the time the manuscript was written. This represents `r round(length(opentree_chronograms$trees)*100/3987, digits = 2)`% of the largest existing chronogram database, which is unfortunately not open for scientific reuse and automatised data mining [@Kumar2017]. OToL is the only public tree repository from where `datelife` can currently pull chronograms to construct its database. Other open repositories are not suitable for time of divergence data mining because they either do not store that data (i.e., TreeBASE), or their metadata does not have enough information to allow automatised chronogram searches (i.e., Dryad). 
 
 A previous version of TimeTree's synthetic chronogram [@Hedges2015] was made available in OToL repository, hence the amount of lineages represented in datelife's database is at least as substantial as TimeTree's. 
 This ensures that at least some information will be available for any given query, but it does not ensure that the full state of knowledge of time of divergence data will be available for any given lineage.
