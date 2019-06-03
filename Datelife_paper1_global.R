@@ -24,3 +24,5 @@ download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/do
 
 source("frin_plan.R")
 loadd() # loads all the targets listed in the workflow plan of the previous `make()`
+library(datelife)
+data(opentree_chronograms)
