@@ -35,7 +35,7 @@ treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method
 <!--INTRODUCTION: 1st paragraph: general statement that the field knows to be true and important-->
 Time of lineage divergence <!--alt lineages: named biological entities, taxon ages?-->
 constitutes a fundamental piece of information for evolutionary
-understanding in many areas of research, from developmental to conservation biology [@Felsenstein1985a; @Webb2000]. This information can be obtained from fossils and from molecular dating studies. The developments in DNA sequencing and phylogenetic dating inferences have encouraged/spurred the application of molecular dating methods to a very large diversity of organisms, greatly increasing the quantity 
+understanding in many areas of research, from developmental to conservation biology [@Felsenstein1985a; @Webb2000]. This information can be obtained from fossils and from molecular dating studies. The developments in DNA sequencing and phylogenetic dating inferences have encouraged/spurred the application of molecular dating methods to a very large diversity of organisms, greatly increasing the quantity
 <!-- and improving the quality  (do we know this? we would expect thatm but there is no analysis on that really...)-->
 of data on taxon ages across the tree of life.
 Along with phylogenetic relationships, it allows testing alternative
@@ -77,7 +77,7 @@ from 3,163 studies, encompassing 97,085 species [@Kumar2017], and continues to g
 However, even in this gold standard resource, the included taxa only encompass between
 0.097 and 3.236% of total species diversity (following taxonomic expert opinion
 on the global, extant species numbers, which ranges from 3 to 100 million species
-[Mayr2010; Moran2011]). One advantage of TimeTree is that it includes taxa from
+[@Mayr2010; @Mora2011]). One advantage of TimeTree is that it includes taxa from
 across the tree of life, versus more specialized chronogram repositories focusing on land plants
 [@stevens2001apw] and mammals [@webb2005phylomatic], birds [@Jetz2012], and fish [@chang2019r]. Users can choose
 between a web interface or a mobile app to receive information on divergence times
