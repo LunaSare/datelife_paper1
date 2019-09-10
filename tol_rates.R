@@ -44,7 +44,3 @@ get_all_ms <- function(phy, age_and_richness, epsilon = 0){
 
     return(list(crown = all_crown, stem = all_stem))
 }
-
-
-jetz_ms0 <- get_all_ms(phy = tol_jetz1[[1]], age_and_richness = jetz_fam_ages_and_richness, epsilon = 0)
-jetz2012_ms0 <- get_all_ms(phy = tol_jetz1[[1]], age_and_richness = jetz_jetz2012fam_age_and_rich, epsilon = 0)

@@ -32,8 +32,16 @@ for(i in seq(jetz_phylo_all)[-is_biggest]){
     jetz_phylo_all[[i]] <- datelife::patristic_matrix_to_phylo(tol_dr[[i]])
   }
 }
+names(jetz_phylo_all) <- names(tol_dr)
+class(jetz_phylo_all) <- "multiPhylo"
 save(jetz_phylo_all, file = "data/jetz_phylo_all.RData")
-
+jetz_phylo_all_forplot <- jetz_phylo_all[-c(is_biggest, which(is_jetz))]
+library(RColorBrewer)
+brewer.pal(9, "RdPu")
+colfunc <- colorRampPalette(brewer.pal(9, "RdPu"))
+ltt_colors_here <- sample(colfunc(length(jetz_phylo_all_forplot)), size = length(jetz_phylo_all_forplot))
+datelife::plot_ltt_phyloall(taxon = "Aves", phy = jetz_phylo_all_forplot, study_number_cex = 0.25,
+  lwd_arrows = 1, ltt_colors = ltt_colors_here)
 # the step that takes a lot of time is going from patristic matrix to phylo
 # then get all calibrations for each tree, in a loop, so we save the information
 jetz_all_calibrations <- vector(mode = "list", length = length(tol_dr))
@@ -90,6 +98,12 @@ tol_jetz_chronograms <- drake_plan(
 make(tol_jetz_chronograms)
 
 # run rates analysis and plot
+
+jetz_ms0 <- get_all_ms(phy = tol_jetz1[[1]], age_and_richness = jetz_fam_ages_and_richness, epsilon = 0)
+load("data/jetz_jetz2012fam_age_and_rich.RData")
+jetz2012_ms0 <- get_all_ms(phy = tol_jetz1[[1]], age_and_richness = jetz_jetz2012fam_age_and_rich, epsilon = 0)
+
+
 tip_fams <- tol_jetz1[[1]]$jetz2012_family
 tip_rich <- tol_jetz1[[1]]$jetz2012_richness
 jetz_jetz2012_min_fam_age_and_rich <- get_clade_age_and_rich(phy = tol_jetz1_bladj_min,
@@ -103,3 +117,41 @@ jetz2012_mean_ms0 <- get_all_ms(phy = tol_jetz1_bladj_mean, age_and_richness = j
 jetz_jetz2012_max_fam_age_and_rich <- get_clade_age_and_rich(phy = tol_jetz1_bladj_max,
   tip_clade = tip_fams, richness = tip_rich)
 jetz2012_max_ms0 <- get_all_ms(phy = tol_jetz1_bladj_max, age_and_richness = jetz_jetz2012_max_fam_age_and_rich, epsilon = 0)
+
+# llt plot of new chronograms
+grDevices::pdf(file = "jetz2012_ltts_min_to_max.pdf", height = 3.5, width = 7)
+graphics::par(mai = c(1.02, 0.82, 0.2, 0.2))
+xlim0 <- round(max(ape::branching.times(tol_jetz1[[1]]))+20, digits = -1)
+max_tips <- ape::Ntip(tol_jetz1_bladj_min)
+color_here <- "#00BFFF"
+taxon <- "Aves"
+ape::ltt.plot(phy = tol_jetz1[[1]], col = color_here, lty = 1, lwd = 2,
+  xlim = c(-xlim0, 0), ylim = c(-max_tips*0.30, max_tips), ylab = paste(taxon, "Species N"),
+        xlab = "")
+x0 <- x1 <- -max(ape::node.depth.edgelength(tol_jetz1[[1]]))
+graphics::arrows(x0, y0 = -0.1*max_tips, x1, y1 = 0, length = 0.075,
+    col = paste0(color_here, "99"), lwd = 2.5, lty = 1)
+graphics::text(x = x0, y = -0.18*max_tips, labels = "Jetz etal. (2012) chronogram", srt = 0,
+    adj = 0, cex = 0.85, col = color_here, font = 2)
+datelife:::ltt_summary(phy_summ = setNames(list(tol_jetz1_bladj_min, tol_jetz1_bladj_mean, tol_jetz1_bladj_max), c("Min", "Mean", "Max")),
+  phy_summ_type = "dating", phy_summ_col = "#DA70D6", max_tips = max_tips, length_arrowhead = 0.075) # default color teal
+graphics::mtext("Time (MYA)", side = 1, cex = 1, font = 1, line = 2.5)
+dev.off()
+
+#ltt plot of original chronogram
+grDevices::pdf(file = "jetz2012_ltt_blue.pdf", height = 3.5, width = 7)
+graphics::par(mai = c(1.02, 0.82, 0.2, 0.2))
+xlim0 <- round(max(ape::branching.times(tol_jetz1[[1]]))+20, digits = -1)
+max_tips <- ape::Ntip(tol_jetz1_bladj_min)
+color_here <- "#00BFFF"
+taxon <- "Aves"
+ape::ltt.plot(phy = tol_jetz1[[1]], col = color_here, lty = 1, lwd = 2,
+  xlim = c(-xlim0, 0), ylim = c(-max_tips*0.30, max_tips), ylab = paste(taxon, "Species N"),
+        xlab = "")
+x0 <- x1 <- -max(ape::node.depth.edgelength(tol_jetz1[[1]]))
+graphics::arrows(x0, y0 = -0.1*max_tips, x1, y1 = 0, length = 0.075,
+    col = paste0(color_here, "99"), lwd = 2.5, lty = 1)
+graphics::text(x = x0, y = -0.18*max_tips, labels = "Jetz etal. (2012) chronogram", srt = 0,
+    adj = 0, cex = 0.85, col = color_here, font = 2)
+graphics::mtext("Time (MYA)", side = 1, cex = 1, font = 1, line = 2.5)
+dev.off()

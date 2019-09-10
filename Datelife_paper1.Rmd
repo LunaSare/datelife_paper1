@@ -131,8 +131,7 @@ The chronogram search is performed across `datelife`'s chronogram database which
 
 Information from source chronograms can be summarised with a summary statistic of tree branch
 lengths (such as median or mean) or using the Super Distance Matrix (SDM) approach for supertree reconstruction [@Criscuolo2006]. <!-- and the hierarchical clustering method of ttol-->
-The resulting summary patristic distance matrix could be clustered with classic algorithms. However, we noticed that the resulting trees are often non-ultrameric and do not reflect the source chronogram data (see datelife_examples package). Instead, we obtained a distribution of age data from the summary matrix available for nodes on a consensus tree. The Branch Length Adjuster (BLADJ) algorithm [@
-2008] was then used to distribute node ages evenly over the consensus tree, minimizing age variance in the resulting chronogram.
+The resulting summary patristic distance matrix could be clustered with classic algorithms. However, we noticed that the resulting trees are often non-ultrameric and do not reflect the source chronogram data (see datelife_examples package). Instead, we obtained a distribution of age data from the summary matrix available for nodes on a consensus tree. The Branch Length Adjuster (BLADJ) algorithm [@Webb2008] was then used to distribute node ages evenly over the consensus tree, minimizing age variance in the resulting chronogram.
 
 For tree dating, the congruification algorithm described by @Eastman2013
 is implemented to find shared nodes between trees (congruent nodes). The ages of these nodes are then used as calibrations to date any given tree. Currently implemented methods for tree dating are BLADJ, MrBayes [@Huelsenbeck2001; @Ronquist2003] and PATHd8 [@Britton2007], a non-clock, rate-smoothing dating method.
