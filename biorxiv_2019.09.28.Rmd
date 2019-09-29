@@ -1,0 +1,51 @@
+---
+output:
+  bookdown::pdf_document2:
+    keep_tex: yes
+    toc: false
+    includes:
+      # in_header: preamble.tex
+      after_body: [biorxiv_2019.09.28_figures.tex]
+    # fig_caption: no
+textalign: left  # this does not work...
+geometry: margin = 1in
+bibliography: library_red.bib
+csl: systematic-biology.csl
+link-citations: yes
+# indent: true # this works
+# header-includes:
+#    - \setlength\parindent{24pt}  # this works too, but I'm gonna indent manually with 4 spaces
+# nope, 4 spaces indents are not recognized, they do something else
+linestretch: 2
+header-includes:
+    - \usepackage{caption}
+    - \usepackage{blindtext}
+    - \usepackage[left]{lineno}
+    - \linenumbers
+  # - \usepackage{xr}
+    # - \usepackage[utf8]{inputenc}
+    # - \usepackage[english]{babel}
+    # - \usepackage[document]{ragged2e}
+nocite: |
+  @barker2012going, @barker2015new, @burns2014phylogenetics, @claramunt2015new, @gibb2015new, @Hedges2015, @hooper2017chromosomal, @Jetz2012, @price2014niche
+---
+<!-- \begin{\nolinenumbers} -->
+<!-- Running head: DATELIFE: REVEALING THE DATED TREE OF LIFE <!--MAX 50 CHARACTERS, ALL CAPITALS-->
+
+**Title**: DateLife: Leveraging databases and analytical tools to reveal the dated Tree of Life
+
+**Authors**: Luna L. Sánchez-Reyes^1^, Brian C. O’Meara^1^
+
+**Correspondence address**:
+
+1. *Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, 425 Hesler Biology Building, Knoxville, TN 37996, USA*
+
+**Corresponding authors**: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
+<!-- \end{nolinenumbers} -->
+
+``` {r child = 'paper.Rmd'}
+```
+\newpage
+\begin{center}
+\textsc{References}
+\end{center}

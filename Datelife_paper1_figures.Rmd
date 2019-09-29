@@ -11,7 +11,7 @@ linestretch: 2
 header-includes:
   - \usepackage[left]{lineno}
   - \linenumbers
-  - \usepackage{caption}
+  # - \usepackage{caption} # no need to use this one here I think, use it on the yaml of the general file
   # - \usepackage{xr}
   #- \externaldocument{name of external document to reference fugures from there in here}
 ---
@@ -83,7 +83,7 @@ LTT plots of median and Supermatrix Distance Method (SDM) chronograms summarizin
 \newpage
 
 \begin{figure}[!h]
-\includegraphics{fig_runtime1.pdf}
+\includegraphics{fig_runtime_main.pdf}
 \caption{}
 \label{fig:runtime1}
 \end{figure}

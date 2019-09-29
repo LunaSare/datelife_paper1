@@ -24,8 +24,3 @@ download.file(url = "https://github.com/LunaSare/datelife_examples/raw/master/do
               destfile = "fig_lttplot_clusters.pdf", mode="wb")
 
 
-source("frin_plan.R") # stopped using drake for this, it is better to run the analysis directly
-loadd() # loads all the targets listed in the workflow plan of the previous `make()`
-library(datelife)
-data(opentree_chronograms)
-
