@@ -5,11 +5,11 @@ output:
     toc: false
     includes:
       # in_header: preamble.tex
-      after_body: [biorxiv_2019.09.28_figures.tex]
+      after_body: [biorxiv_2019.09.28figcaps.tex]
     # fig_caption: no
 textalign: left  # this does not work...
 geometry: margin = 1in
-bibliography: library_red.bib
+bibliography: paper_references.bib
 csl: systematic-biology.csl
 link-citations: yes
 # indent: true # this works

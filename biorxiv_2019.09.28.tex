@@ -134,7 +134,7 @@ All or parts of this synthetic tree can be reused for any purpose. However, it c
 The Timetree of Life project focuses on the synthesis of a single chronogram of life (Hedges et al. \protect\hyperlink{ref-Hedges2006}{2006}) and presents a very accessible, attractive interface. However, the thousands of chronograms this NSF-funded project have compiled for synthesis are only publicly available for visual examination in their website or for download as images, but large scale download remains prohibited by their site. The latest version of their synthetic chronogram (Kumar et al. \protect\hyperlink{ref-Kumar2017}{2017}) can be queried only through their website in a non-automatised fashion, and only subsets of it can be reused for analyses with the permission of the authors.
 Other platforms such as SuperSmart (Antonelli et al. \protect\hyperlink{ref-antonelli2017supersmart}{2017}) and phylogenerator (Pearse and Purvis \protect\hyperlink{ref-pearse2013phylogenerator}{2013}) are focused in automatised \emph{de novo} chronogram inference, by reusing DNA sequence data to reconstruct phylogenetic trees. However, expert fossil information necessary for subsequent molecular dating analyses still needs to be compiled and curated by the user, rendering them a challenging tool to obtain data on time of lineage divergence for the non-specialist. Moreover, these tools do not provide information from already created expert chronograms.
 
-A tool for efficient reuse of expert, published data on time of lineage divergence should have an open and fuly public chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
+A tool for efficient reuse of expert, published data on time of lineage divergence should have an open and fully public chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
 A prototype service aiming to meet this characteristics was developed over a series of hackathons at the National Evolutionary Synthesis Center (Stoltzfus et al. \protect\hyperlink{ref-Stoltzfus2013}{2013}).
 In here we present the formal description and implementation of the \texttt{datelife} service, constituted by an R package and a web site (\url{http://www.datelife.org/}). There is still much room for improvement, and flaws and limitations are addressed below. We strived for the current implementation of \texttt{datelife} to perform the basic tasks described above, featuring a system for maintenance of an open database of chronograms pulled from public repositories, methods to summarize and compare source chronograms, and new functions to visualize and graphically compare source and summary chronograms.
 
@@ -248,7 +248,7 @@ Both summary and newly generated trees are potentially useful to evaluate evolut
 \texttt{datelife} is free and open source and it can be used through its current website
 \url{http://www.datelife.org/query/}, through its R package, and through Phylotastic's project web portal \url{http://phylo.cs.nmsu.edu:3000/}.
 \texttt{datelife}'s website is maintained using RStudio's shiny server and the shiny package open infrastructure, as well as Docker.
-\texttt{datelife}'s R package stable version is \textbf{not} available yet
+\texttt{datelife}'s R package stable version will be available
 for installation from the CRAN repository (\url{https://cran.r-project.org/package=datelife})
 using the command \texttt{install.packages(pkgs\ =\ "datelife")} from within R. Development versions
 are available from the GitHub repository (\url{https://github.com/phylotastic/datelife})
@@ -273,14 +273,14 @@ Funding was provided by the US National Science Foundation (NSF) grants ABI-1458
 We thank colleagues from the O'Meara Lab at the University
 of Tennesse Knoxville for suggestions, discussions and software testing.
 The late National Evolutionary Synthesis Center (NESCent), which sponsored hackathons
-that led to initial work on this project. The team that assembled datelife's first proof of concept: Tracy Heath, Jonathan Eastman, Peter Midford, Joseph Brown, Matt Pennell, Mike Alfaro, and Luke Harmon.
+that led to initial work on this project. The team that assembled \texttt{datelife}'s first proof of concept: Tracy Heath, Jonathan Eastman, Peter Midford, Joseph Brown, Matt Pennell, Mike Alfaro, and Luke Harmon.
 The Open Tree of Life project that provides the open, metadata rich repository of
 trees used for \texttt{datelife}.
 The many scientists who publish their chronograms in an open, reusable form, and
 the scientists who curate them for deposition in the Open Tree of Life repository.
 The NSF for funding nearly all the above, in addition to the ABI grant that funded this project itself.
-
 \newpage
+
 \begin{center}
 \textsc{References}
 \end{center}
@@ -435,7 +435,7 @@ Webb C.O., Donoghue M.J. 2005. Phylomatic: Tree assembly for applied phylogeneti
 
 \newpage
 \begin{figure}[!h]
-\includegraphics{Fig1.pdf}
+\includegraphics{./figures/Fig1.pdf}
 \caption{}
 \label{fig:workflow}
 \end{figure}
@@ -445,17 +445,17 @@ Webb C.O., Donoghue M.J. 2005. Phylomatic: Tree assembly for applied phylogeneti
 Stylized DateLife workflow. This shows the general worflows and analyses that can be performed with \texttt{datelife}, via the R package or through the website. Details on the functions involved on each workflow are shown in \texttt{datelife}'s R package vignette.
 \newpage
 \begin{figure}[!h]
-\includegraphics[width=1\linewidth]{fig_runtime_main.pdf}
+\includegraphics[width=1\linewidth]{./figures/fig_runtime_main.pdf}
 \caption{}
 \label{fig:runtime1}
 \end{figure}
 % \begin{center}
 % \textsc{Figure \ref{fig:runtime1}}
 % \end{center}
-Computation time of query processing and search across \texttt{datelife}'s chronogram database relative to number of input taxon names. We sampled N names from the class Aves for each cohort 100 times and then performed a search with query processing not using the Taxon Names Resoultion Service (TNRS; dark gray), and using TNRS (light gray). We also performed a search using the already processed query for comparison (light blue). 
+Computation time of query processing and search across \texttt{datelife}'s chronogram database relative to number of input taxon names. We sampled N names from the class Aves for each cohort 100 times and then performed a search with query processing not using the Taxon Names Resoultion Service (TNRS; dark gray), and using TNRS (light gray). We also performed a search using the already processed query for comparison (light blue).
 \newpage
 \begin{figure}[!h]
-\includegraphics[width=1\linewidth]{fig_schronograms1.pdf}
+\includegraphics[width=1\linewidth]{./figures/fig_schronograms1.pdf}
 \caption{}
 \label{fig:schronograms1}
 \end{figure}
@@ -465,7 +465,7 @@ Computation time of query processing and search across \texttt{datelife}'s chron
 Lineage through time (LTT) plots of source chronograms containing all or a subset of species from the bird family Fringillidae of true finches. Arrows indicate maximum age of each chronogram. Numbers reference to chronograms' original publications 1: Barker et al. (\protect\hyperlink{ref-barker2012going}{2012}), 2: Barker et al. (\protect\hyperlink{ref-barker2015new}{2015}), 3: Burns et al. (\protect\hyperlink{ref-burns2014phylogenetics}{2014}), 4: Claramunt and Cracraft (\protect\hyperlink{ref-claramunt2015new}{2015}), 5: Gibb et al. (\protect\hyperlink{ref-gibb2015new}{2015}), 6: Hedges et al. (\protect\hyperlink{ref-Hedges2015}{2015}), 7: Hooper and Price (\protect\hyperlink{ref-hooper2017chromosomal}{2017}), 8: Jetz et al. (\protect\hyperlink{ref-Jetz2012}{2012}), 9: Price et al. (\protect\hyperlink{ref-price2014niche}{2014}).
 \newpage
 \begin{figure}[!h]
-\includegraphics{fig_summaries.pdf}
+\includegraphics{./figures/fig_summaries.pdf}
 %\includegraphics{fig_summaries.pdf}
 \caption{}
 \label{fig:summaries}
@@ -473,10 +473,10 @@ Lineage through time (LTT) plots of source chronograms containing all or a subse
 % \begin{center}
 % \textsc{Figure \ref{fig:summaries}}
 % \end{center}
-LTT plots of median and Supermatrix Distance Method (SDM) chronograms summarising information from source chronograms found for the Fringillidae. Arrows indicate maximum age.
+LTT plots of median (top) and Supermatrix Distance Method (SDM; bottom) chronograms summarising information from source chronograms found for the Fringillidae. Arrows indicate tree maximum age.
 \newpage
 \begin{figure}[!h]
-\includegraphics{fig_crossval_bladj.pdf}
+\includegraphics{./figures/fig_crossval_bladj.pdf}
 \caption{}
 \label{fig:cvbladj}
 \end{figure}
@@ -486,7 +486,7 @@ LTT plots of median and Supermatrix Distance Method (SDM) chronograms summarisin
 LTT plots showing results from the cross-validation analyses of trees without branch lengths dated using BLADJ. The dating analysis can only be performed in trees with more than 2 tips, thus excluding chronogram from study 4; its data was still used as calibration for the other source chronograms.
 \newpage
 \begin{figure}[!h]
-\includegraphics{fig_crossval_boldsumm.pdf}
+\includegraphics{./figures/fig_crossval_boldsumm.pdf}
 \caption{}
 \label{fig:cvbold}
 \end{figure}

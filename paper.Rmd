@@ -1,17 +1,20 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ```{r eval = TRUE, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 # code to generate the paper data and figures:
 # source("data.R")
 # inactivated now just for testing purposes
 # we are using drake to avoid running the examples everytime we change something in the Rmd and knit
 # using this for testing instead:
-source("./frin_plan.R") # stopped using drake for this, it is better to run the analysis directly
+source("./data/frin_plan.R") # stopped using drake for this, it is better to run the analysis directly
 loadd() # loads all the targets listed in the workflow plan of the previous `make()`
 library(datelife)
 data(opentree_chronograms)
 rpackage_available <- FALSE
-availability <- ifelse(rpackage_available, "is available", "is **not** available yet")
-thank_origteam <- TRUE
-origteam <- ifelse(thank_origteam, "The team that assembled datelife's first proof of concept: Tracy Heath, Jonathan Eastman, Peter Midford, Joseph Brown, Matt Pennell, Mike Alfaro, and Luke Harmon.", "")
+availability <- ifelse(rpackage_available, "is available", "will be available")
 ```
 
 \newpage
@@ -270,7 +273,7 @@ Funding was provided by the US National Science Foundation (NSF) grants ABI-1458
 We thank colleagues from the O'Meara Lab at the University
 of Tennesse Knoxville for suggestions, discussions and software testing.
 The late National Evolutionary Synthesis Center (NESCent), which sponsored hackathons
-that led to initial work on this project. `r origteam`
+that led to initial work on this project. The team that assembled `datelife`'s first proof of concept: Tracy Heath, Jonathan Eastman, Peter Midford, Joseph Brown, Matt Pennell, Mike Alfaro, and Luke Harmon.
 The Open Tree of Life project that provides the open, metadata rich repository of
 trees used for `datelife`.
 The many scientists who publish their chronograms in an open, reusable form, and
