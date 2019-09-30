@@ -49,7 +49,7 @@ can provide data on time of lineage divergence, but it is often not in a phyloge
 
 To our knowledge, there is no system allowing the comparison of available source information (apw does this a little bit, but it is a verbal comparison more than a graphical or visual comparison). Other types of technical comparisons: which trees are better (which trees represent reality better), but this is of course a very difficult issue.
  -->
-A tool for efficient reuse of expert, published data on time of lineage divergence should have an open and fuly public chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
+A tool for efficient reuse of expert, published data on time of lineage divergence should have an open and fully public chronogram database storing data in a format suitable for scientific reuse, an automatised way of accessing the information, and straightforward means of comparing and summarizing chronogram information as needed by the user.
 A prototype service aiming to meet this characteristics was developed over a series of hackathons at the National Evolutionary Synthesis Center [@Stoltzfus2013].
 In here we present the formal description and implementation of the `datelife` service, constituted by an R package and a web site (<http://www.datelife.org/>). There is still much room for improvement, and flaws and limitations are addressed below. We strived for the current implementation of `datelife` to perform the basic tasks described above, featuring a system for maintenance of an open database of chronograms pulled from public repositories, methods to summarize and compare source chronograms, and new functions to visualize and graphically compare source and summary chronograms.
 <!-- as well as tools for comparison of source and summary trees.  -->
@@ -258,7 +258,7 @@ Dryad also?? since it is all in github already, maybe not necessary-->
 \textsc{Funding}
 \end{center}
 
-Funding was provided by the US National Science Foundation (NSF) grants ABI-1458603  to Datelife project and DBI-0905606 to the National Evolutionary Synthesis Center (NESCent), and the Phylotastic project Grant ABI-1458572. 
+Funding was provided by the US National Science Foundation (NSF) grants ABI-1458603  to Datelife project and DBI-0905606 to the National Evolutionary Synthesis Center (NESCent), and the Phylotastic project Grant ABI-1458572.
 
 <!-- Any separate funding from the University of Tennessee, Knoxville?? -->
 
@@ -276,4 +276,3 @@ trees used for `datelife`.
 The many scientists who publish their chronograms in an open, reusable form, and
 the scientists who curate them for deposition in the Open Tree of Life repository.
 The NSF for funding nearly all the above, in addition to the ABI grant that funded this project itself.
-

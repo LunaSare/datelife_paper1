@@ -1,6 +1,9 @@
 # datelife_paper1
-first paper for DateLife
+First paper for DateLife
+File structure:
+  
 
+To reproduce any version of this paper:
 To render, use the knit button in RStudio for Datelife_paper1.Rmd.
 
 Alternatively:
