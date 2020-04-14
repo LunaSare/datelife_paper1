@@ -3,10 +3,10 @@ First paper for DateLife
 
 To reproduce any version of this manuscript, you will need the R packages `datelife`, `drake`, `knitr` and `rmarkdown` installed.
 
-Then, choose the version you want to reproduce, for example `biorxiv_2019.09.28.Rmd`.
+From the root directory, choose the version of the paper that you want to reproduce, for example `biorxiv_2019.09.28.Rmd`.
 You can open this in RStudio and hit the `knit` button. Or you can go to the R terminal and use rmarkdown::render("biorxiv_2019.09.28.Rmd", "all")
 
-File structure:
+Project file structure:
 
 - paper.Rmd: Go here if you want to modify the main parts of the manuscript: intro, methods, results, discussion, conclusion, disclaimers, thanks.
 - paper_references.tex: Contans the bibtex of references. Any new reference should be added here in bibtex format.
