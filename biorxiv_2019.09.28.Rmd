@@ -29,21 +29,30 @@ header-includes:
 nocite: |
   @barker2012going, @barker2015new, @burns2014phylogenetics, @claramunt2015new, @gibb2015new, @Hedges2015, @hooper2017chromosomal, @Jetz2012, @price2014niche
 ---
-<!-- \begin{\nolinenumbers} -->
-<!-- Running head: DATELIFE: REVEALING THE DATED TREE OF LIFE <!--MAX 50 CHARACTERS, ALL CAPITALS-->
+```{r eval = TRUE, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
+# code to generate the paper data and figures:
+# source("data.R")
+# inactivated now just for testing purposes
+# we are using drake to avoid running the examples everytime we change something in the Rmd and knit
+# using this for testing instead:
+source("./data/frin_plan.R") # stopped using drake for this, it is better to run the analysis directly
+loadd() # loads all the targets listed in the workflow plan of the previous `make()`
+library(datelife)
+data(opentree_chronograms)
+rpackage_available <- FALSE
+availability <- ifelse(rpackage_available, "is available", "will be available")
+```
 
-**Title**: DateLife: Leveraging databases and analytical tools to reveal the dated Tree of Life
-
-**Authors**: Luna L. Sánchez-Reyes^1^, Brian C. O’Meara^1^
-
-**Correspondence address**:
-
-1. *Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, 425 Hesler Biology Building, Knoxville, TN 37996, USA*
-
-**Corresponding authors**: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
-<!-- \end{nolinenumbers} -->
-
-``` {r child = 'paper.Rmd'}
+``` {r child = 'paper_1-header.Rmd'}
+```
+\newpage
+``` {r child = 'paper_2-abstract.Rmd'}
+```
+\newpage
+\begin{center}
+\textsc{Introduction}
+\end{center}
+``` {r child = 'paper_3-main.Rmd'}
 ```
 \newpage
 \begin{center}

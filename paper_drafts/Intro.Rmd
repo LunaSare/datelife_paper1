@@ -5,8 +5,8 @@ output:
     toc: false
 textalign: left  # this does not work...
 geometry: margin = 1in
-bibliography: library_red.bib
-csl: systematic-biology.csl
+bibliography: ../paper_references.bib
+csl: ../systematic-biology.csl
 link-citations: yes
 linestretch: 2
 header-includes:

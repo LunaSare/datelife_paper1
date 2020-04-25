@@ -88,6 +88,20 @@
 
 \begin{document}
 
+\texttt{datelife}'s database includes all chronograms derived from expert knowledge, and this includes those derived from secondary calibrations.
+
+Improvements:
+* fossils as calibrations: Using secondary calibrations can generate biased ages when using bayesian methods, mainly because we don't know what prior to give to secondary calibrations
+(Schenk \protect\hyperlink{ref-Schenk2016}{2016}).
+* bayesian congruification
+* topological congruification
+
+Phylomatic (Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005})
+is a platform that synthesizes a tree containing taxa of interest from a user supplied set of trees or from its own database.
+It has the advantage that it allows grafting taxa of interest absent from their database, but it is limited to mostly seed plants and mammals. If your query does not match its records, it gives many polytomies back.
+
+treePL, is a semi-parametric, rate-smoothing, penalized likelihood dating method
+(Smith and O'Meara \protect\hyperlink{ref-Smith2012}{2012}).
 Time of lineage divergence
 constitutes a fundamental piece of information for evolutionary
 understanding in many areas of research, from developmental to conservation biology (Felsenstein \protect\hyperlink{ref-Felsenstein1985a}{1985}; Webb \protect\hyperlink{ref-Webb2000}{2000}). This information can be obtained from fossils and from molecular dating studies. The developments in DNA sequencing and phylogenetic dating inferences have encouraged/spurred the application of molecular dating methods to a very large diversity of organisms, greatly increasing the quantity
@@ -113,7 +127,7 @@ from 3,163 studies, encompassing 97,085 species (Kumar et al. \protect\hyperlink
 However, even in this gold standard resource, the included taxa only encompass between
 0.097 and 3.236\% of total species diversity (following taxonomic expert opinion
 on the global, extant species numbers, which ranges from 3 to 100 million species
-{[}Mayr2010; Moran2011{]}). One advantage of TimeTree is that it includes taxa from
+(Mayr \protect\hyperlink{ref-Mayr2010}{2010}; Mora et al. \protect\hyperlink{ref-Mora2011}{2011})). One advantage of TimeTree is that it includes taxa from
 across the tree of life, versus more specialized chronogram repositories focusing on land plants
 (Stevens and Davis \protect\hyperlink{ref-stevens2001apw}{2001}) and mammals (Webb and Donoghue \protect\hyperlink{ref-webb2005phylomatic}{2005}), birds (Jetz et al. \protect\hyperlink{ref-Jetz2012}{2012}), and fish (Chang et al. \protect\hyperlink{ref-chang2019r}{2019}). Users can choose
 between a web interface or a mobile app to receive information on divergence times
@@ -210,6 +224,12 @@ Jetz W., Thomas G., Joy J.J., Hartmann K., Mooers A. 2012. The global diversity 
 \leavevmode\hypertarget{ref-Kumar2017}{}%
 Kumar S., Stecher G., Suleski M., Hedges S.B. 2017. TimeTree: A Resource for Timelines, Timetrees, and Divergence Times. Molecular biology and evolution. 34:1812--1819.
 
+\leavevmode\hypertarget{ref-Mayr2010}{}%
+Mayr R.M. 2010. Tropical Arthropod Species, More or Less? Science. 329:41--42.
+
+\leavevmode\hypertarget{ref-Mora2011}{}%
+Mora C., Tittensor D.P., Adl S., Simpson A.G., Worm B. 2011. How many species are there on earth and in the ocean? PLoS Biology. 9:1--8.
+
 \leavevmode\hypertarget{ref-Morlon2014}{}%
 Morlon H. 2014. Phylogenetic approaches for studying diversification. Ecology Letters. 17:508--525.
 
@@ -221,6 +241,12 @@ Price T.D., Hooper D.M., Buchanan C.D., Johansson U.S., Tietze D.T., Alström P.
 
 \leavevmode\hypertarget{ref-Sauquet2012c}{}%
 Sauquet H., Ho S.Y.W., Gandolfo M. a, Jordan G.J., Wilf P., Cantrill D.J., Bayly M.J., Bromham L., Brown G.K., Carpenter R.J., Lee D.M., Murphy D.J., Sniderman J.M.K., Udovicic F. 2012. Testing the impact of calibration on molecular divergence times using a fossil-rich group: the case of Nothofagus (Fagales). Systematic Biology. 61:289--313.
+
+\leavevmode\hypertarget{ref-Schenk2016}{}%
+Schenk J.J. 2016. Consequences of secondary calibrations on divergence time estimates. PLoS ONE. 11.
+
+\leavevmode\hypertarget{ref-Smith2012}{}%
+Smith S.A., O'Meara B.C. 2012. TreePL: Divergence time estimation using penalized likelihood for large phylogenies. Bioinformatics. 28:2689--2690.
 
 \leavevmode\hypertarget{ref-stevens2001apw}{}%
 Stevens P.F., Davis H. 2001. Angiosperm phylogeny website..

@@ -1,0 +1,16 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+**Title**: DateLife: Leveraging databases and analytical tools to reveal the dated Tree of Life
+
+**Authors**: Luna L. Sánchez-Reyes^1^, Brian C. O’Meara^1^
+
+**Correspondence address**:
+
+1. *Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, 425 Hesler Biology Building, Knoxville, TN 37996, USA*
+
+**Corresponding authors**: sanchez.reyes.luna@gmail.com, bomeara@utk.edu
+<!-- \end{nolinenumbers} -->

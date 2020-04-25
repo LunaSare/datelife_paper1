@@ -6,3 +6,4 @@
 _cache
 datelife_paper1.Rproj
 *.html
+.DS_Store
