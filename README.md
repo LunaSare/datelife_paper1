@@ -4,10 +4,10 @@ First paper for DateLife
 
 To reproduce any version of this manuscript, you will need the R packages `datelife`, `drake`, `knitr` and `rmarkdown` installed.
 
-Then, choose the version you want to reproduce, for example `biorxiv_2019.09.28.Rmd`.
-You can open this in RStudio and hit the `knit` button. Or you can go to the R terminal and use `rmarkdown::render("biorxiv_2019.09.28.Rmd", "all")`
+From the root directory, choose the version of the paper that you want to reproduce, for example `biorxiv_2019.09.28.Rmd`.
+You can open this in RStudio and hit the `knit` button. Or you can go to the R terminal and use rmarkdown::render("biorxiv_2019.09.28.Rmd", "all")
 
-File structure:
+Project file structure:
 
 - paper_1-header.Rmd: Information of title and author's names and  affiliations.
 - paper_2-abstract.Rmd: The abstract and keywords.
